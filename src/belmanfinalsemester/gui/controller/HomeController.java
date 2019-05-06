@@ -5,33 +5,29 @@
  */
 package belmanfinalsemester.gui.controller;
 
-import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author wailampoon
  */
-public class MainController implements Initializable {
+public class HomeController implements Initializable {
 
     @FXML
-    private JFXButton department1;
+    private Label ordernumber;
     @FXML
-    private JFXButton department2;
+    private Label deldate;
     @FXML
-    private JFXButton department3;
+    private Label customer;
     @FXML
-    private JFXButton department4;
+    private Label department;
     @FXML
-    private JFXButton department5;
-    @FXML
-    private JFXButton department6;
-    @FXML
-    private JFXButton department7;
+    private Label estimatedprogress;
 
     /**
      * Initializes the controller class.

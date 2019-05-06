@@ -19,7 +19,7 @@ public class BelmanFinalSemester extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/Main.fxml"));
         
         Scene scene = new Scene(root);
         

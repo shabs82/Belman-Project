@@ -29,6 +29,9 @@ public class HomeController implements Initializable {
     @FXML
     private Label estimatedprogress;
 
+    
+    //hihi
+    
     /**
      * Initializes the controller class.
      */

@@ -18,20 +18,6 @@ import javafx.fxml.Initializable;
  */
 public class MainController implements Initializable {
 
-    @FXML
-    private JFXButton department1;
-    @FXML
-    private JFXButton department2;
-    @FXML
-    private JFXButton department3;
-    @FXML
-    private JFXButton department4;
-    @FXML
-    private JFXButton department5;
-    @FXML
-    private JFXButton department6;
-    @FXML
-    private JFXButton department7;
 
     /**
      * Initializes the controller class.

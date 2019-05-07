@@ -30,7 +30,7 @@ public class HomeController implements Initializable {
     private Label estimatedprogress;
 
     
-    //hihi
+    
     
     /**
      * Initializes the controller class.

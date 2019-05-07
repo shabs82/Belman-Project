@@ -5,16 +5,32 @@
  */
 package belmanfinalsemester.gui.controller;
 
+import com.jfoenix.controls.JFXProgressBar;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
- * @author kulsoom-Abbas
+ * @author Test
  */
-public class TableViewController implements Initializable {
+public class OrderInfoController implements Initializable {
+
+    @FXML
+    private Label lblCustomer;
+    @FXML
+    private Label lblStartDate;
+    @FXML
+    private Label lblDeliveryDate;
+    @FXML
+    private Label lblOrderNumber;
+    @FXML
+    private JFXProgressBar progressBar;
+    @FXML
+    private Label lblEmployees;
 
     /**
      * Initializes the controller class.

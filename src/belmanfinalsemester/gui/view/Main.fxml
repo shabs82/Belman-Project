@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,7 +38,7 @@
                         <Image url="@belman_logo_retina.png" />
                      </image>
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets top="10.0" />
                      </HBox.margin>
                   </ImageView>
                   <SplitMenuButton mnemonicParsing="false" text="SplitMenuButton">
@@ -51,6 +53,19 @@
                </children>
             </HBox>
          </top>
+         <center>
+            <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn prefWidth="172.0" text="Order Number" />
+          <TableColumn prefWidth="111.0" text="Start Date" />
+            <TableColumn prefWidth="116.0" text="End Date" />
+            <TableColumn prefWidth="127.0" text="Time Left" />
+              </columns>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

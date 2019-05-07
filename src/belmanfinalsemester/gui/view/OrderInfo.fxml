@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="belmanfinalsemester.gui.controller.PopupScreenController">
+<AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.OrderInfoController">
    <children>
       <GridPane prefHeight="175.0" prefWidth="600.0">
         <columnConstraints>
@@ -33,7 +32,7 @@
          </children>
       </GridPane>
       <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="514.0" prefHeight="20.0" prefWidth="569.0" progress="0.0" secondaryProgress="0.0" />
-      <Label layoutX="3.0" layoutY="246.0" text="Department Employees:" />
+      <Label layoutX="14.0" layoutY="246.0" text="Employees assigned to order:" />
       <Label fx:id="lblEmployees" layoutX="196.0" layoutY="246.0" prefHeight="244.0" prefWidth="369.0" style="-fx-background-color: tomato;" />
    </children>
 </AnchorPane>

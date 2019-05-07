@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +23,8 @@ public class BelmanFinalSemester extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/Main.fxml"));
         
         Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("/belman_logo_retina.png"));
+        stage.setTitle("Belman");
         
         stage.setScene(scene);
         stage.show();

@@ -27,7 +27,7 @@
                            </image>
                         </ImageView>
                         <JFXComboBox fx:id="combobox" labelFloat="true" layoutX="593.0" layoutY="75.0" prefHeight="27.0" prefWidth="180.0" promptText="Department" stylesheets="@CSS.css" unFocusColor="BLACK" />
-                        <Label fx:id="currentweekday" layoutX="160.0" layoutY="90.0" text="Label" />
+                        <Label fx:id="currentweekday" layoutX="180.0" layoutY="90.0" text="Label" />
                      </children>
                   </AnchorPane>
                </children>

@@ -52,4 +52,24 @@ and open the template in the editor.
      -fx-text-fill: black;
     
 }
+
+/*-----------------------------------------------------------------------------*/
+
+#btnfinish{
+     -fx-background-color: #004983;
+    
+     -fx-text-fill: white;
+}
    
+
+#OrderInfoAnchorPane{
+    
+    -fx-background-color: #1F2324;
+    
+}
+
+#headVbox{
+    
+    
+     -fx-background-color: white;
+}

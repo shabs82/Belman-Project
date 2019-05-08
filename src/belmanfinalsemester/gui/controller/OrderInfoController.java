@@ -5,6 +5,7 @@
  */
 package belmanfinalsemester.gui.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,17 +21,11 @@ import javafx.scene.control.Label;
 public class OrderInfoController implements Initializable {
 
     @FXML
-    private Label lblCustomer;
-    @FXML
-    private Label lblStartDate;
-    @FXML
-    private Label lblDeliveryDate;
-    @FXML
-    private Label lblOrderNumber;
-    @FXML
     private JFXProgressBar progressBar;
     @FXML
     private Label lblEmployees;
+    @FXML
+    private JFXButton btnfinish;
 
     /**
      * Initializes the controller class.

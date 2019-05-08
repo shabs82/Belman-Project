@@ -5,6 +5,7 @@
  */
 package belmanfinalsemester;
 
+import JSON.JSONReader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,6 +35,12 @@ public class BelmanFinalSemester extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        JSONReader jr = new JSONReader();
+        jr.readJsonFile();
+        JSONReader jasread = new JSONReader();
+        jasread.readJsonTxt();
+        
+        
         launch(args);
     }
     

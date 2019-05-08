@@ -5,6 +5,7 @@
  */
 package belmanfinalsemester.gui.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,6 +25,10 @@ public class MainController implements Initializable {
     private Label currentDate;
     @FXML
     private Label currentTime;
+    @FXML
+    private JFXComboBox<?> combobox;
+    @FXML
+    private Label currentweekday;
 
     /**
      * Initializes the controller class.
@@ -42,6 +47,7 @@ public class MainController implements Initializable {
 
         currentDate.setText(forDate.format(dateForDate));
         currentTime.setText(forTime.format(dateForDate));
+        currentweekday.setText(forDayOfWeek.format(dateForDate));
 
     }
 

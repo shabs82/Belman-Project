@@ -5,10 +5,19 @@
  */
 package belmanfinalsemester.bll;
 
+import belmanfinalsemester.be.Order;
+import belmanfinalsemester.dal.MockDALManager;
+import java.util.List;
+
 /**
  *
  * @author Test
  */
 public class Facade {
+    
+    MockDALManager mcDalManager = new MockDALManager();
+    public List<Order> createOrders (){
+        return mcDalManager.createOrders();
+    } 
     
 }

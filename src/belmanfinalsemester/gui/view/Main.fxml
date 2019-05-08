@@ -26,7 +26,7 @@
                               <Image url="@belman_logo_retina.png" />
                            </image>
                         </ImageView>
-                        <JFXComboBox layoutX="593.0" layoutY="80.0" prefHeight="27.0" prefWidth="180.0" />
+                        <JFXComboBox fx:id="combobox" labelFloat="true" layoutX="593.0" layoutY="75.0" prefHeight="27.0" prefWidth="180.0" promptText="Department" stylesheets="@CSS.css" unFocusColor="BLACK" />
                      </children>
                   </AnchorPane>
                </children>
@@ -35,10 +35,10 @@
          <center>
             <TableView id="mainTableview" prefHeight="546.0" prefWidth="747.0" stylesheets="@CSS.css" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="267.7785816192627" styleClass="columhead" text="Order Number" />
-          <TableColumn prefWidth="187.44290161132812" styleClass="columhead" text="Start Date" />
-            <TableColumn prefWidth="155.55706787109375" styleClass="columhead" text="End Date" />
-            <TableColumn prefWidth="148.21099853515625" styleClass="columhead" text="Time Left" />
+                <TableColumn prefWidth="267.7785816192627" styleClass="column-header-background" text="Order Number" />
+          <TableColumn prefWidth="187.44290161132812" styleClass="column-header-background" text="Start Date" />
+            <TableColumn prefWidth="155.55706787109375" styleClass="column-header-background" text="End Date" />
+            <TableColumn prefWidth="148.21099853515625" styleClass="column-header-background" text="Time Left" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />

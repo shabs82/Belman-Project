@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -16,7 +15,7 @@
    <children>
       <BorderPane prefHeight="549.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <HBox prefHeight="81.0" prefWidth="595.0" BorderPane.alignment="CENTER">
+            <HBox id="mainHbox" prefHeight="81.0" prefWidth="595.0" stylesheets="@CSS.css" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane prefHeight="95.0" prefWidth="795.0">
                      <children>
@@ -27,24 +26,19 @@
                               <Image url="@belman_logo_retina.png" />
                            </image>
                         </ImageView>
-                        <SplitMenuButton alignment="CENTER" layoutX="625.0" layoutY="80.0" mnemonicParsing="false" text="SplitMenuButton">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Department1" />
-                            <MenuItem mnemonicParsing="false" text="Department" />
-                          </items>
-                        </SplitMenuButton>
+                        <JFXComboBox layoutX="593.0" layoutY="80.0" prefHeight="27.0" prefWidth="180.0" />
                      </children>
                   </AnchorPane>
                </children>
             </HBox>
          </top>
          <center>
-            <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView id="mainTableview" prefHeight="546.0" prefWidth="747.0" stylesheets="@CSS.css" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="267.7785816192627" text="Order Number" />
-          <TableColumn prefWidth="187.44290161132812" text="Start Date" />
-            <TableColumn prefWidth="155.55706787109375" text="End Date" />
-            <TableColumn prefWidth="148.21099853515625" text="Time Left" />
+                <TableColumn prefWidth="267.7785816192627" styleClass="columhead" text="Order Number" />
+          <TableColumn prefWidth="187.44290161132812" styleClass="columhead" text="Start Date" />
+            <TableColumn prefWidth="155.55706787109375" styleClass="columhead" text="End Date" />
+            <TableColumn prefWidth="148.21099853515625" styleClass="columhead" text="Time Left" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />

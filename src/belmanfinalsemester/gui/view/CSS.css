@@ -9,17 +9,41 @@ and open the template in the editor.
 */
 
 #AnchorPane{
-    -fx-background-color: lightslategray;
+    -fx-background-color: #DDDDDD;
     -fx-border-width: 2.5;
     -fx-border-color: black;
     
     
 }
 
-.dpmbtn{
+#mainHbox{
     
-   -fx-border-width: 2.5;
-    -fx-border-color: black; 
+    -fx-background-color: white;
     
+}
+
+
+
+#mainTableview{
+    
+      -fx-border-color: linear-gradient(to right bottom,black, grey,black);
+    -fx-background-color:transparent;
+    -fx-border-width: 3;
+   
+    -fx-background-radius: 4.5;
+
+   
+   
+
+    -fx-border-radius:4.5;
+    
+    
+}
+
+.columnhead{
+    -fx-background-color:#004983;
+    -fx-text-fill: transparent;
+     -fx-table-cell-border-color: black;
+   
     
 }

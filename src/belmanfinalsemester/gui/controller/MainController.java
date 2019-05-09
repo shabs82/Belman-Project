@@ -7,7 +7,6 @@ package belmanfinalsemester.gui.controller;
 
 //import belmanfinalsemester.SomeException;
 import belmanfinalsemester.SomeException;
-import belmanfinalsemester.be.Order;
 import belmanfinalsemester.gui.model.MainModel;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
@@ -19,15 +18,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -51,6 +48,7 @@ public class MainController implements Initializable {
     private MainModel mModel = new MainModel();
     @FXML
     private BorderPane MainBorderPane;
+    
 
     /**
      * Initializes the controller class.
@@ -130,5 +128,6 @@ public class MainController implements Initializable {
             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
 }

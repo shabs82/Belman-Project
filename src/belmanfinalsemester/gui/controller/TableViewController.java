@@ -51,16 +51,16 @@ public class TableViewController implements Initializable {
     
     
     private void setTableColumn(){
-     clmOrderNum.setCellValueFactory(new PropertyValueFactory("Order Number"));
-        clmStartDate.setCellValueFactory(new PropertyValueFactory("Start Date"));
-       clmEndDate.setCellValueFactory(new PropertyValueFactory("End Date"));
-       clmTimeLeft.setCellValueFactory(new PropertyValueFactory("Time Left"));
+     clmOrderNum.setCellValueFactory(new PropertyValueFactory("orderNumber"));
+     clmStartDate.setCellValueFactory(new PropertyValueFactory("startDate"));
+       clmEndDate.setCellValueFactory(new PropertyValueFactory("endDate"));
+       clmTimeLeft.setCellValueFactory(new PropertyValueFactory("timeLeft"));
     
     }
     
     
-   public void setItem(){
-  tableView.setItems((ObservableList<Order>) mModel.createOrders());
+   public void setOrdersTable(String departmentName){
+        tableView.setItems(mModel.getOrders(departmentName));
    
    }
     

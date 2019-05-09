@@ -19,7 +19,9 @@ public class MainModel {
     private Facade facade = new Facade();
     private ObservableList<Order> obList = FXCollections.observableArrayList();
     
-    public List<Order> createOrders (){
-        return facade.createOrders();
+    public ObservableList<Order> getOrders(String departmentName){
+        List<Order> orders = facade.createOrders();
+        obList.setAll(orders);
+        return obList;
     }
 }

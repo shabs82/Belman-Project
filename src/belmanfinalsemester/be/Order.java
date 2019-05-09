@@ -12,12 +12,12 @@ package belmanfinalsemester.be;
  */
 public class Order {
     
-    private int orderNumber;
+    private String orderNumber;
     private String startDate;
     private String endDate;
     private int timeLeft;
     
-    public Order (int orderNumber, String startDate, String endDate, int timeLeft){
+    public Order (String orderNumber, String startDate, String endDate, int timeLeft){
         this.orderNumber = orderNumber;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -27,11 +27,11 @@ public class Order {
     public Order(){
     }
 
-    public int getOrderNumber() {
+    public String getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(int orderNumber) {
+    public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 
@@ -58,12 +58,6 @@ public class Order {
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
     }
-
-    @Override
-    public String toString() {
-        return "OrdersInformation{" + "orderNumber=" + orderNumber + ", startDate=" + startDate + ", endDate=" + endDate + ", timeLeft=" + timeLeft + '}';
-    }
-    
     
     
 }

@@ -5,18 +5,29 @@
  */
 package belmanfinalsemester.gui.controller;
 
+//import belmanfinalsemester.SomeException;
 import belmanfinalsemester.be.Order;
+import belmanfinalsemester.gui.model.MainModel;
 import com.jfoenix.controls.JFXComboBox;
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
@@ -33,14 +44,15 @@ public class MainController implements Initializable {
     private JFXComboBox combobox;
     @FXML
     private Label currentweekday;
-    @FXML
     private TableColumn<Order, Integer> clmOrderNum;
-    @FXML
     private TableColumn<Order, String> clmStartDate;
-    @FXML
     private TableColumn<Order, String> clmEndDate;
-    @FXML
     private TableColumn<Order, Integer> clmTimeLeft;
+    private TableView<Order> tableView;
+
+    private MainModel mModel = new MainModel();
+    @FXML
+    private BorderPane MainBorderPane;
 
     /**
      * Initializes the controller class.
@@ -52,6 +64,16 @@ public class MainController implements Initializable {
         combobox.getItems().add("Montage 1");
         combobox.getItems().add("Montage 2");
         setDateAndTime();
+        try {
+            setTableViewFXML();
+
+        
+        } catch (IOException ex) {
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+
     }
 
     public void setDateAndTime() {
@@ -63,17 +85,33 @@ public class MainController implements Initializable {
         currentDate.setText(forDate.format(dateForDate));
         currentTime.setText(forTime.format(dateForDate));
         currentweekday.setText(forDayOfWeek.format(dateForDate));
-        
-        clmOrderNum.setCellValueFactory(new PropertyValueFactory("Order Number"));
-        clmStartDate.setCellValueFactory(new PropertyValueFactory("Start Date"));
-        clmEndDate.setCellValueFactory(new PropertyValueFactory("End Date"));
-        clmTimeLeft.setCellValueFactory(new PropertyValueFactory("Time Left"));
 
     }
 
     @FXML
+    // private void dropDown(ActionEvent event) throws SomeException {
     private void dropDown(ActionEvent event) {
-     //   if (combobox.)
+        String orderValue = "";
+        if (combobox.getItems() == null) {
+            // throw new SomeException ("You need to specify your department");
+        }
+
+        int selectedIndex = combobox.getSelectionModel().getSelectedIndex();
+        switch (selectedIndex) {
+
+            case 0:
+                orderValue = mModel.createOrders().toString();
+                break;
+        }
+        tableView.setItems((ObservableList<Order>) mModel.createOrders());
+
+    }
+//        System.out.println(combobox.getSelectionModel().getSelectedItem().toString());
+
+    public void setTableViewFXML() throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/TableView.fxml"));
+        MainBorderPane.setCenter(root);
     }
 
 }

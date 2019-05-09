@@ -44,11 +44,8 @@ public class MainController implements Initializable {
     private JFXComboBox combobox;
     @FXML
     private Label currentweekday;
-    private TableColumn<Order, Integer> clmOrderNum;
-    private TableColumn<Order, String> clmStartDate;
-    private TableColumn<Order, String> clmEndDate;
-    private TableColumn<Order, Integer> clmTimeLeft;
-    private TableView<Order> tableView;
+   
+    
 
     private MainModel mModel = new MainModel();
     @FXML
@@ -103,7 +100,7 @@ public class MainController implements Initializable {
                 orderValue = mModel.createOrders().toString();
                 break;
         }
-        tableView.setItems((ObservableList<Order>) mModel.createOrders());
+        
 
     }
 //        System.out.println(combobox.getSelectionModel().getSelectedItem().toString());

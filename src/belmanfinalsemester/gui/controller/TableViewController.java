@@ -6,11 +6,14 @@
 package belmanfinalsemester.gui.controller;
 
 import belmanfinalsemester.be.Order;
+import belmanfinalsemester.gui.model.MainModel;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -28,7 +31,11 @@ public class TableViewController implements Initializable {
     private TableColumn<Order, String> clmEndDate;
     @FXML
    private TableColumn<Order, Integer> clmTimeLeft;
+    @FXML
+    private TableView<Order> tableView;
 
+    
+     private MainModel mModel = new MainModel();
     
 
     /**
@@ -38,10 +45,23 @@ public class TableViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        clmOrderNum.setCellValueFactory(new PropertyValueFactory("Order Number"));
+      setTableColumn();
+     // setItem();
+    }   
+    
+    
+    private void setTableColumn(){
+     clmOrderNum.setCellValueFactory(new PropertyValueFactory("Order Number"));
         clmStartDate.setCellValueFactory(new PropertyValueFactory("Start Date"));
        clmEndDate.setCellValueFactory(new PropertyValueFactory("End Date"));
        clmTimeLeft.setCellValueFactory(new PropertyValueFactory("Time Left"));
-    }    
+    
+    }
+    
+    
+   public void setItem(){
+  tableView.setItems((ObservableList<Order>) mModel.createOrders());
+   
+   }
     
 }

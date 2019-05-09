@@ -33,14 +33,11 @@ public class BelmanFinalSemester extends Application {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         JSONReader jr = new JSONReader();
         jr.readJsonFile();
-        JSONReader jasread = new JSONReader();
-        jasread.readJsonTxt();
-        
-        
         launch(args);
     }
     

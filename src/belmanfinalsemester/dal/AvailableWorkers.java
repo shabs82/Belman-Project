@@ -25,7 +25,7 @@ public class AvailableWorkers {
     }
     public void addAvailableWorkers(String initials ,String name,long salary) throws Exception {
         try (Connection con = connector.getConnection()) {
-            String sql = "INSERT INTO Employee (Employee_Initials,Employee_Name,Employee_Salary) VALUES(?, ?)";
+            String sql = "INSERT INTO Employee (initials,name,salary) VALUES(?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, initials);
             stmt.setString(2,name);

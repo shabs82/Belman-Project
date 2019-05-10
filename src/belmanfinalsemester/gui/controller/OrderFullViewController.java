@@ -5,6 +5,8 @@
  */
 package belmanfinalsemester.gui.controller;
 
+import belmanfinalsemester.be.Order;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,20 +19,22 @@ import javafx.scene.control.Label;
  *
  * @author Test
  */
-public class OrderInfoController implements Initializable {
+public class OrderFullViewController implements Initializable {
 
     @FXML
-    private Label lblCustomer;
+    private JFXProgressBar progressBar;
+    @FXML
+    private Label lblEmployees;
+    @FXML
+    private JFXButton btnfinish;
     @FXML
     private Label lblStartDate;
     @FXML
     private Label lblDeliveryDate;
     @FXML
-    private Label lblOrderNumber;
+    private Label lblCustomer;
     @FXML
-    private JFXProgressBar progressBar;
-    @FXML
-    private Label lblEmployees;
+    private Label lblOrderNum;
 
     /**
      * Initializes the controller class.
@@ -39,5 +43,15 @@ public class OrderInfoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+ 
     
+    
+    public void setOrderInfo(Order currentOrder){
+        
+   
+    lblOrderNum.setText(currentOrder.getOrderNumber());
+    lblStartDate.setText(currentOrder.getStartDate());
+     lblDeliveryDate.setText(currentOrder.getEndDate());
+    
+    }
 }

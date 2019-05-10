@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package belmanfinalsemester;
+package belmanfinalsemester.exception;
 
 /**
  *
  * @author Test
  */
-public class SomeException extends Exception {
+public class BelmanException extends Exception {
     
-    public SomeException(String message)
+    public BelmanException(String message)
     {
         super(message);
     }

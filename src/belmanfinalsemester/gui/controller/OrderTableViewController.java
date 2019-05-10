@@ -5,7 +5,7 @@
  */
 package belmanfinalsemester.gui.controller;
 
-import belmanfinalsemester.SomeException;
+import belmanfinalsemester.exception.BelmanException;
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.gui.model.MainModel;
 import java.io.IOException;
@@ -22,29 +22,31 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import belmanfinalsemester.gui.util.MessageBoxHelper;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
  * @author wailampoon
  */
-public class TableViewController implements Initializable {
+public class OrderTableViewController implements Initializable {
 
     @FXML
     private TableColumn<Order, Integer> clmOrderNum;
     @FXML
-     private TableColumn<Order, String> clmStartDate;
+    private TableColumn<Order, String> clmStartDate;
     @FXML
     private TableColumn<Order, String> clmEndDate;
     @FXML
-   private TableColumn<Order, Integer> clmTimeLeft;
+    private TableColumn<Order, Integer> clmTimeLeft;
     @FXML
     private TableView<Order> tableView;
 
     
      private MainModel mModel = new MainModel();
-    @FXML
-    private Button btn1;
     
 
     /**
@@ -70,20 +72,24 @@ public class TableViewController implements Initializable {
    }
 
     @FXML
-    private void displayOrderInfo(ActionEvent event) throws SomeException, IOException {
-        Stage stage = null;
-        Order selectedOrder = tableView.getSelectionModel().getSelectedItem();
-        if (selectedOrder == null){
-            throw new SomeException("At least one order must be selected");
+    private void showOrderFullView(MouseEvent event) 
+    {
+        if(event.getClickCount() == 2)
+        {
+            try 
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
+                Scene scene = new Scene(root);
+                
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+            } 
+            catch (IOException ex) 
+            {
+                Logger.getLogger(OrderTableViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        else{
-            Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/OrderInfo.fxml")); 
-            Scene scene = new Scene(root);
-            stage = (Stage) btn1.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-     }
-        
-   }
+    }
     
 }

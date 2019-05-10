@@ -20,9 +20,9 @@ public class BelmanFinalSemester extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/MainView.fxml"));
         Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("/belman_logo_retina.png"));
+        stage.getIcons().add(new Image("images/belman_logo_retina.png"));
         stage.setTitle("Belman");
         
         stage.setScene(scene);

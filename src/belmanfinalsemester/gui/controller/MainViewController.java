@@ -5,8 +5,8 @@
  */
 package belmanfinalsemester.gui.controller;
 
-//import belmanfinalsemester.SomeException;
-import belmanfinalsemester.SomeException;
+//import belmanfinalsemester.BelmanException;
+import belmanfinalsemester.exception.BelmanException;
 import belmanfinalsemester.gui.model.MainModel;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
@@ -32,8 +32,10 @@ import javafx.scene.layout.BorderPane;
  *
  * @author wailampoon
  */
-public class MainController implements Initializable {
+public class MainViewController implements Initializable {
 
+    private MainModel mModel = new MainModel();
+    
     @FXML
     private Label currentDate;
     @FXML
@@ -42,10 +44,6 @@ public class MainController implements Initializable {
     private JFXComboBox<String> combobox;
     @FXML
     private Label currentweekday;
-   
-    
-
-    private MainModel mModel = new MainModel();
     @FXML
     private BorderPane MainBorderPane;
     
@@ -55,15 +53,20 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        combobox.getItems().add("Halvfab");
-        combobox.getItems().add("Bælg");
-        combobox.getItems().add("Montage 1");
-        combobox.getItems().add("Montage 2");
+        initializeComboBox();
         setDateAndTime();
         loadTableViewFXML();
         
         
 
+    }
+    
+    private void initializeComboBox()
+    {
+        combobox.getItems().add("Halvfab");
+        combobox.getItems().add("Bælg");
+        combobox.getItems().add("Montage 1");
+        combobox.getItems().add("Montage 2");
     }
 
     public void setDateAndTime() {
@@ -77,57 +80,45 @@ public class MainController implements Initializable {
         currentweekday.setText(forDayOfWeek.format(dateForDate));
 
     }
-
-    @FXML
-    private void dropDown(ActionEvent event) throws SomeException {
-//        String orderValue = "";
-//        if (combobox.getItems() == null) {
-//            throw new SomeException ("You need to specify your department");
-//        }
-//
-//        int selectedIndex = combobox.getSelectionModel().getSelectedIndex();
-//        switch (selectedIndex) {
-//
-//            case 0:
-        String selectedDepartment = combobox.getSelectionModel().getSelectedItem();
-        if(combobox.getSelectionModel().getSelectedItem() != null)
-        {
-            setTableViewFXML(selectedDepartment);
-        }
-        
-
-    }
-//        System.out.println(combobox.getSelectionModel().getSelectedItem().toString());
-
-    public void setTableViewFXML(String selectedDepartment) {
-
-        try 
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/TableView.fxml"));
-            Parent root = fxmlLoader.load();
-            
-            TableViewController controller = fxmlLoader.getController();
-            controller.setOrdersTable(selectedDepartment);
-            MainBorderPane.setCenter(root);
-        } 
-        catch (IOException ex) 
-        {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadTableViewFXML() {
+    
+        private void loadTableViewFXML() {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/TableView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/OrderTableView.fxml"));
             Parent root = fxmlLoader.load();
             MainBorderPane.setCenter(root);
         }
         catch(IOException ex)
         {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    @FXML
+    private void dropDown(ActionEvent event) throws BelmanException {
+        String selectedDepartment = combobox.getSelectionModel().getSelectedItem();
+        if(combobox.getSelectionModel().getSelectedItem() != null)
+        {
+            setOrdersTable(selectedDepartment);
+        }
+        
 
+    }
+
+    public void setOrdersTable(String selectedDepartment) {
+
+        try 
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/OrderTableView.fxml"));
+            Parent root = fxmlLoader.load();
+            
+            OrderTableViewController controller = fxmlLoader.getController();
+            controller.setOrdersTable(selectedDepartment);
+            MainBorderPane.setCenter(root);
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

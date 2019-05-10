@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
  *
  * @author Test
  */
-public class OrderInfoController implements Initializable {
+public class OrderFullViewController implements Initializable {
 
     @FXML
     private JFXProgressBar progressBar;

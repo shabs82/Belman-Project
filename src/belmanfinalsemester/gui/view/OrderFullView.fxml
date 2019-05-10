@@ -15,7 +15,7 @@
                <children>
                   <AnchorPane prefHeight="61.0" prefWidth="600.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="17.0" prefHeight="26.0" prefWidth="323.0" text="OrderNumber" textAlignment="CENTER">
+                        <Label fx:id="lblOrderNum" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="17.0" prefHeight="26.0" prefWidth="323.0" text="OrderNumber" textAlignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -32,9 +32,9 @@
       <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="72.0" prefHeight="30.0" prefWidth="120.0" text="Start Date :" textFill="WHITE" />
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="144.0" prefHeight="30.0" prefWidth="120.0" text="Customer's Name :" textAlignment="JUSTIFY" textFill="WHITE" />
       <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="108.0" prefHeight="30.0" prefWidth="120.0" text="Delivery Date :" textFill="WHITE" />
-      <Label layoutX="252.0" layoutY="72.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
-      <Label layoutX="252.0" layoutY="108.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
-      <Label layoutX="252.0" layoutY="144.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
+      <Label fx:id="lblStartDate" layoutX="252.0" layoutY="72.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
+      <Label fx:id="lblDeliveryDate" layoutX="252.0" layoutY="108.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
+      <Label fx:id="lblCustomer" layoutX="252.0" layoutY="144.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
       <Label layoutX="460.0" layoutY="390.0" text="Date Left : " textFill="WHITE" />
       <Label layoutX="534.0" layoutY="385.0" text="Day" textFill="#dd5050">
          <font>

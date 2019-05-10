@@ -43,7 +43,7 @@ public class OrderTableViewController implements Initializable {
     @FXML
     private TableColumn<Order, Integer> clmTimeLeft;
     @FXML
-    private TableView<Order> tableView;
+    private TableView<Order> tvOrders;
 
     
      private MainModel mModel = new MainModel();
@@ -68,7 +68,7 @@ public class OrderTableViewController implements Initializable {
     
     
    public void setOrdersTable(String departmentName){
-        tableView.setItems(mModel.getOrders(departmentName));
+        tvOrders.setItems(mModel.getOrders(departmentName));
    }
 
     @FXML
@@ -76,14 +76,22 @@ public class OrderTableViewController implements Initializable {
     {
         if(event.getClickCount() == 2)
         {
+             
             try 
             {
-                Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
+                Parent root;  //FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
+                root = (Parent) fxmlLoader.load();
+               OrderFullViewController controller = fxmlLoader.getController();
                 Scene scene = new Scene(root);
                 
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
+                
+               Order order = tvOrders.getSelectionModel().getSelectedItem();         
+               controller.setOrderInfo(order);
+                
             } 
             catch (IOException ex) 
             {

@@ -15,13 +15,23 @@ public class Order {
     private String orderNumber;
     private String startDate;
     private String endDate;
-    private int timeLeft;
+    private String timeLeft;
+    private String customerName;
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
     
-    public Order (String orderNumber, String startDate, String endDate, int timeLeft){
+    public Order (String orderNumber, String startDate, String endDate, String timeLeft, String customerName){
         this.orderNumber = orderNumber;
         this.startDate = startDate;
         this.endDate = endDate;
         this.timeLeft = timeLeft;
+        this.customerName = customerName;
     }
     
     public Order(){
@@ -51,11 +61,11 @@ public class Order {
         this.endDate = endDate;
     }
 
-    public int getTimeLeft() {
+    public String getTimeLeft() {
         return timeLeft;
     }
 
-    public void setTimeLeft(int timeLeft) {
+    public void setTimeLeft(String timeLeft) {
         this.timeLeft = timeLeft;
     }
     

@@ -80,9 +80,10 @@ public class OrderTableViewController implements Initializable {
             try 
             {
                 Parent root;  //FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                        .getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
                 root = (Parent) fxmlLoader.load();
-               OrderFullViewController controller = fxmlLoader.getController();
+                OrderFullViewController controller = fxmlLoader.getController();
                 Scene scene = new Scene(root);
                 
                 Stage stage = new Stage();

@@ -1,12 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 06-May-2019, 13:47:51
-    Author     : wailampoon
-*/
+
 
 #AnchorPane{
     -fx-background-color: #1F2324;
@@ -25,19 +17,12 @@ and open the template in the editor.
 
 
 #mainTableview{
-    
-      -fx-border-color: white;
+    -fx-border-color: white;
     -fx-background-color:#DDDDDD;
     -fx-border-width: 3;
-   
     -fx-background-radius: 4.5;
-
      -fx-table-cell-border-color: black;
-   
-
-    -fx-border-radius:4.5;
-    
-    
+    -fx-border-radius:4.5;   
 }
 
 .column-header-background{
@@ -48,8 +33,8 @@ and open the template in the editor.
 
 
 #combobox{
-   -fx-background-color: #004983;
-     -fx-text-fill: black;
+     -fx-background-color: #004983;
+     -fx-text-fill: white;
     
 }
 
@@ -57,19 +42,15 @@ and open the template in the editor.
 
 #btnfinish{
      -fx-background-color: #004983;
-    
      -fx-text-fill: white;
 }
    
 
 #OrderInfoAnchorPane{
-    
-    -fx-background-color: #1F2324;
+  -fx-background-color: #1F2324;
     
 }
 
 #headVbox{
-    
-    
      -fx-background-color: white;
 }

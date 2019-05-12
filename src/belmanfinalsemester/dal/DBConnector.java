@@ -18,9 +18,6 @@ import java.util.Properties;
  * @author Test
  */
 public class DBConnector {
-    
-   
-    
     private SQLServerDataSource ds;
 
     public DBConnector() throws FileNotFoundException

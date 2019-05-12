@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -35,23 +37,25 @@ public class OrderFullViewController implements Initializable {
     private Label lblCustomer;
     @FXML
     private Label lblOrderNum;
+    @FXML
+    private Label lblLeftDate;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //TODO
     }    
  
     
     
-    public void setOrderInfo(Order currentOrder){
-        
-   
-    lblOrderNum.setText(currentOrder.getOrderNumber());
-    lblStartDate.setText(currentOrder.getStartDate());
+    public void setOrderInfo(Order currentOrder){   
+     lblOrderNum.setText(currentOrder.getOrderNumber());
+     lblStartDate.setText(currentOrder.getStartDate());
      lblDeliveryDate.setText(currentOrder.getEndDate());
+     lblLeftDate.setText(currentOrder.getTimeLeft());
+     lblCustomer.setText(currentOrder.getCustomerName());
     
     }
 }

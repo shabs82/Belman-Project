@@ -21,13 +21,15 @@ public class MockDALManager {
         o1.setOrderNumber("500-100-200-01");
         o1.setStartDate("2019-05-08");
         o1.setEndDate("2019-05-13");
-        o1.setTimeLeft(3); 
+        o1.setTimeLeft("3 days"); 
+        o1.setCustomerName("Chritiano Ronaldo");
         
         Order o2 = new Order();
         o2.setOrderNumber("500-100-200-02");
         o2.setStartDate("2019-05-10");
         o2.setEndDate("2019-05-15");
-        o2.setTimeLeft(2); 
+        o2.setTimeLeft("2 days");
+        o2.setCustomerName("David Beckham");
 
     
          ArrayList<Order> list1 = new ArrayList();

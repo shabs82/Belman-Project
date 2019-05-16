@@ -13,6 +13,9 @@
             <TableColumn fx:id="clmEndDate" prefWidth="155.55706787109375" text="End Date" />
             <TableColumn fx:id="clmTimeLeft" prefWidth="187.0" text="Time Left" />
          </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </AnchorPane>

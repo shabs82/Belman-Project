@@ -9,6 +9,7 @@ package belmanfinalsemester.gui.controller;
 import belmanfinalsemester.exception.BelmanException;
 import belmanfinalsemester.gui.model.MainModel;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -46,6 +47,8 @@ public class MainViewController implements Initializable {
     private Label currentweekday;
     @FXML
     private BorderPane MainBorderPane;
+    @FXML
+    private JFXTextField searchbar;
     
 
     /**

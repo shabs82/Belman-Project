@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="OrderInfoAnchorPane" prefHeight="515.0" prefWidth="600.0" stylesheets="@../../../css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.OrderFullViewController">
+<AnchorPane id="OrderInfoAnchorPane" prefHeight="515.0" prefWidth="600.0" stylesheets="@../../../resources/css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.OrderFullViewController">
    <children>
       <VBox layoutX="14.0" layoutY="8.0" prefHeight="515.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,7 +24,7 @@
                         </Label>
                         <ImageView fitHeight="55.0" fitWidth="89.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/belman_logo_retina.png" />
+                              <Image url="@../../../resources/images/belman_logo_retina.png" />
                            </image>
                         </ImageView>
                      </children>

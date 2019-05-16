@@ -18,10 +18,17 @@ import javafx.collections.ObservableList;
 public class MainModel {
     private Facade facade = new Facade();
     private ObservableList<Order> obList = FXCollections.observableArrayList();
+    private ObservableList<Order> filteredList = FXCollections.observableArrayList();
     
     public ObservableList<Order> getOrders(String departmentName){
         List<Order> orders = facade.getOrders();
         obList.setAll(orders);
         return obList;
+    }
+    
+    public ObservableList<Order> searchOrders(String key)
+    {
+        filteredList.setAll(facade.searchOrders(obList, key));
+        return filteredList;
     }
 }

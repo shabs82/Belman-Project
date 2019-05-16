@@ -6,31 +6,34 @@
 package belmanfinalsemester.gui.controller;
 
 //import belmanfinalsemester.BelmanException;
+import belmanfinalsemester.be.Order;
 import belmanfinalsemester.exception.BelmanException;
 import belmanfinalsemester.gui.model.MainModel;
-import belmanfinalsemester.gui.util.MessageBoxHelper;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.Observable;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -53,6 +56,17 @@ public class MainViewController implements Initializable {
     private BorderPane MainBorderPane;
     @FXML
     private JFXTextField txtFieldSearchBar;
+    @FXML
+    private TableColumn<Order, Integer> clmOrderNum;
+    @FXML
+    private TableColumn<Order, String> clmStartDate;
+    @FXML
+    private TableColumn<Order, String> clmEndDate;
+    @FXML
+    private TableColumn<Order, Integer> clmTimeLeft;
+    @FXML
+       
+     TableView<Order> tvOrders;
     
 
     /**
@@ -62,7 +76,9 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         initializeComboBox();
         setDateAndTime();
-        loadTableViewFXML();
+        //loadTableViewFXML();
+        
+        setTableColumn();
     }
     
     private void initializeComboBox()
@@ -72,13 +88,6 @@ public class MainViewController implements Initializable {
         combobox.getItems().add("Montage 1");
         combobox.getItems().add("Montage 2");
         
-        txtFieldSearchBar.textProperty().addListener((Observable observable) -> {
-            try {
-                reload();
-            } catch (IOException ex) {
-                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
     }
 
     public void setDateAndTime() {
@@ -92,63 +101,72 @@ public class MainViewController implements Initializable {
         currentweekday.setText(forDayOfWeek.format(dateForDate));
 
     }
+    private void setTableColumn(){
+       clmOrderNum.setCellValueFactory(new PropertyValueFactory("orderNumber"));
+       clmStartDate.setCellValueFactory(new PropertyValueFactory("startDate"));
+       clmEndDate.setCellValueFactory(new PropertyValueFactory("endDate"));
+       clmTimeLeft.setCellValueFactory(new PropertyValueFactory("timeLeft"));
     
-        private void loadTableViewFXML() {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/OrderTableView.fxml"));
-            Parent root = fxmlLoader.load();
-            MainBorderPane.setCenter(root);
-        }
-        catch(IOException ex)
-        {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
+    
+    
+//   public void setOrdersTable(String departmentName){
+//        tvOrders.setItems(mModel.getOrders(departmentName));
+//   }
+//    
+//        private void loadTableViewFXML() {
+//        try
+//        {
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/OrderTableView.fxml"));
+//            Parent root = fxmlLoader.load();
+//            MainBorderPane.setCenter(root);
+//        }
+//        catch(IOException ex)
+//        {
+//            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     @FXML
     private void dropDown(ActionEvent event) throws BelmanException {
         String selectedDepartment = combobox.getSelectionModel().getSelectedItem();
         if(combobox.getSelectionModel().getSelectedItem() != null)
         {
-            setOrdersTable(selectedDepartment);
-        }
-        
-
-    }
-
-    public void setOrdersTable(String selectedDepartment) {
-
-        try 
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/belmanfinalsemester/gui/view/OrderTableView.fxml"));
-            Parent root = fxmlLoader.load();
-            
-            OrderTableViewController controller = fxmlLoader.getController();
-            controller.setOrdersTable(selectedDepartment);
-            MainBorderPane.setCenter(root);
-        } 
-        catch (IOException ex) 
-        {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            tvOrders.setItems(mModel.getOrders(selectedDepartment));
         }
     }
 
-     public void reload() throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource
-                                            ("/belmanfinalsemester/gui/view/OrderTableView.fxml"));
-            Parent root = fxmlLoader.load();
-            
-            OrderTableViewController controller = fxmlLoader.getController();
-            controller.tvOrders.setItems(mModel.getOrders(txtFieldSearchBar.getText()));
-        } catch (IOException ex) {
-            MessageBoxHelper.displayError("File not found");
+    @FXML
+    private void showOrderFullView(MouseEvent event) {
+        if(event.getClickCount() == 2)
+        {
+             
+            try 
+            {
+                Parent root;  //FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                        .getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
+                root = (Parent) fxmlLoader.load();
+                OrderFullViewController controller = fxmlLoader.getController();
+                Scene scene = new Scene(root);
+                
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                
+               Order order = tvOrders.getSelectionModel().getSelectedItem();         
+               controller.setOrderInfo(order);
+                
+            } 
+            catch (IOException ex) 
+            {
+                Logger.getLogger(OrderTableViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
     @FXML
     private void searchOrders(KeyEvent event) {
-        System.out.println("123");
+        tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
     }
 }

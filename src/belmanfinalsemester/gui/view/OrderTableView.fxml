@@ -6,7 +6,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="808.0" stylesheets="@../../../css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.OrderTableViewController">
    <children>
-      <TableView fx:id="tvOrders" layoutX="8.5" layoutY="8.5" onMouseClicked="#showOrderFullView" prefHeight="587.0" prefWidth="797.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
+      <TableView layoutX="8.5" layoutY="8.5" onMouseClicked="#showOrderFullView" prefHeight="587.0" prefWidth="797.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
          <columns>
             <TableColumn fx:id="clmOrderNum" prefWidth="267.7785816192627" text="Order Number" />
             <TableColumn fx:id="clmStartDate" prefWidth="187.44290161132812" text="Start Date" />

@@ -9,6 +9,7 @@ import belmanfinalsemester.be.Order;
 import belmanfinalsemester.dal.MockDALManager;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,6 +46,19 @@ public class Facade {
             double allDays = ChronoUnit.DAYS.between(order.getStartDate(), order.getEndDate());
             return currentDays/allDays;
         }
+    }
+    
+    public List<Order> searchOrders(List<Order> allOrders, String key)
+    {
+        List<Order> filteredList = new ArrayList();
+        for(Order order: allOrders)
+        {
+            if(order.getOrderNumber().substring(0, key.length()).equals(key))
+            {
+                filteredList.add(order);
+            }
+        }
+        return filteredList;
     }
     
 }

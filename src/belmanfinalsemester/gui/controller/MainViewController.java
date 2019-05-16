@@ -8,16 +8,19 @@ package belmanfinalsemester.gui.controller;
 //import belmanfinalsemester.BelmanException;
 import belmanfinalsemester.exception.BelmanException;
 import belmanfinalsemester.gui.model.MainModel;
+import belmanfinalsemester.gui.util.MessageBoxHelper;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.Observable;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -48,7 +52,7 @@ public class MainViewController implements Initializable {
     @FXML
     private BorderPane MainBorderPane;
     @FXML
-    private JFXTextField searchbar;
+    private JFXTextField txtFieldSearchBar;
     
 
     /**
@@ -59,9 +63,6 @@ public class MainViewController implements Initializable {
         initializeComboBox();
         setDateAndTime();
         loadTableViewFXML();
-        
-        
-
     }
     
     private void initializeComboBox()
@@ -70,6 +71,14 @@ public class MainViewController implements Initializable {
         combobox.getItems().add("Bælg");
         combobox.getItems().add("Montage 1");
         combobox.getItems().add("Montage 2");
+        
+        txtFieldSearchBar.textProperty().addListener((Observable observable) -> {
+            try {
+                reload();
+            } catch (IOException ex) {
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     public void setDateAndTime() {
@@ -123,5 +132,23 @@ public class MainViewController implements Initializable {
         {
             Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+     public void reload() throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource
+                                            ("/belmanfinalsemester/gui/view/OrderTableView.fxml"));
+            Parent root = fxmlLoader.load();
+            
+            OrderTableViewController controller = fxmlLoader.getController();
+            controller.tvOrders.setItems(mModel.getOrders(txtFieldSearchBar.getText()));
+        } catch (IOException ex) {
+            MessageBoxHelper.displayError("File not found");
+        }
+    }
+
+    @FXML
+    private void searchOrders(KeyEvent event) {
+        System.out.println("123");
     }
 }

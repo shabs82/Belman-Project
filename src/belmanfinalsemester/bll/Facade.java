@@ -7,6 +7,8 @@ package belmanfinalsemester.bll;
 
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.dal.MockDALManager;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -16,8 +18,33 @@ import java.util.List;
 public class Facade {
     
     MockDALManager mcDalManager = new MockDALManager();
-    public List<Order> createOrders (){
-        return mcDalManager.createOrders();
+    
+    public List<Order> getOrders (){
+        List<Order> orders =  mcDalManager.getOrders();
+        for(Order o : orders)
+        {
+            double progress = calculateProgress(o);
+            o.setProgress(progress);
+        }
+        return orders;
     } 
+    
+    private double calculateProgress(Order order)
+    {
+        if(LocalDate.now().isAfter(order.getEndDate()))
+        {
+            return 1;
+        }
+        else if(LocalDate.now().isBefore(order.getStartDate()))
+        {
+            return 0;
+        }
+        else
+        {
+            double currentDays = ChronoUnit.DAYS.between(order.getStartDate(), LocalDate.now());
+            double allDays = ChronoUnit.DAYS.between(order.getStartDate(), order.getEndDate());
+            return currentDays/allDays;
+        }
+    }
     
 }

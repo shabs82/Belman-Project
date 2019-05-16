@@ -43,7 +43,8 @@ public class OrderTableViewController implements Initializable {
     @FXML
     private TableColumn<Order, Integer> clmTimeLeft;
     @FXML
-    private TableView<Order> tvOrders;
+       
+     TableView<Order> tvOrders;
 
     
      private MainModel mModel = new MainModel();

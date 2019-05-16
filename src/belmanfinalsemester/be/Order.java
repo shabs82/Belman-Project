@@ -5,6 +5,8 @@
  */
 package belmanfinalsemester.be;
 
+import java.time.LocalDate;
+
 
 /**
  *
@@ -13,10 +15,12 @@ package belmanfinalsemester.be;
 public class Order {
     
     private String orderNumber;
-    private String startDate;
-    private String endDate;
-    private String timeLeft;
     private String customerName;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private int timeLeft;
+    private double progress;
+    
 
     public String getCustomerName() {
         return customerName;
@@ -26,7 +30,7 @@ public class Order {
         this.customerName = customerName;
     }
     
-    public Order (String orderNumber, String startDate, String endDate, String timeLeft, String customerName){
+    public Order (String orderNumber, LocalDate startDate, LocalDate endDate, int timeLeft, String customerName){
         this.orderNumber = orderNumber;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -45,28 +49,36 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public String getTimeLeft() {
+    public int getTimeLeft() {
         return timeLeft;
     }
 
-    public void setTimeLeft(String timeLeft) {
+    public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
+    }
+
+    public double getProgress() {
+        return progress;
+    }
+
+    public void setProgress(double progress) {
+        this.progress = progress;
     }
     
     

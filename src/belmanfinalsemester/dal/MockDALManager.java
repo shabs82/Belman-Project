@@ -6,6 +6,7 @@
 package belmanfinalsemester.dal;
 
 import belmanfinalsemester.be.Order;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,24 +17,22 @@ import java.util.List;
 public class MockDALManager {
     private List<Order> orderInfo;
     
-    public List<Order> createOrders (){
+    public List<Order> getOrders(){
         Order o1 = new Order();
         o1.setOrderNumber("500-100-200-01");
-        o1.setStartDate("2019-05-08");
-        o1.setEndDate("2019-05-13");
-        o1.setTimeLeft("3 days"); 
+        o1.setStartDate(LocalDate.now().minusDays(5));
+        o1.setEndDate(LocalDate.now().plusDays(3));
+        o1.setTimeLeft(3); 
         o1.setCustomerName("Chritiano Ronaldo");
         
         
         Order o2 = new Order();
         o2.setOrderNumber("500-100-200-02");
-        o2.setStartDate("2019-05-10");
-        o2.setEndDate("2019-05-15");
-        o2.setTimeLeft("2 days");
+        o2.setStartDate(LocalDate.now().minusDays(7));
+        o2.setEndDate(LocalDate.now().plusDays(2));
+        o2.setTimeLeft(2);
         o2.setCustomerName("David Beckham");
-        
 
-    
          ArrayList<Order> list1 = new ArrayList();
          list1.add(o1);
          list1.add(o2);

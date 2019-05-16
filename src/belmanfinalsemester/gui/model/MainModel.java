@@ -20,7 +20,7 @@ public class MainModel {
     private ObservableList<Order> obList = FXCollections.observableArrayList();
     
     public ObservableList<Order> getOrders(String departmentName){
-        List<Order> orders = facade.createOrders();
+        List<Order> orders = facade.getOrders();
         obList.setAll(orders);
         return obList;
     }

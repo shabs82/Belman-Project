@@ -9,6 +9,7 @@ import belmanfinalsemester.be.Order;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,10 +53,11 @@ public class OrderFullViewController implements Initializable {
     
     public void setOrderInfo(Order currentOrder){   
      lblOrderNum.setText(currentOrder.getOrderNumber());
-     lblStartDate.setText(currentOrder.getStartDate());
-     lblDeliveryDate.setText(currentOrder.getEndDate());
-     lblLeftDate.setText(currentOrder.getTimeLeft());
+     lblStartDate.setText(currentOrder.getStartDate().toString());
+     lblDeliveryDate.setText(currentOrder.getEndDate().toString());
+     lblLeftDate.setText(Integer.toString(currentOrder.getTimeLeft()));
      lblCustomer.setText(currentOrder.getCustomerName());
+     progressBar.setProgress(currentOrder.getProgress() );
     
     }
 }

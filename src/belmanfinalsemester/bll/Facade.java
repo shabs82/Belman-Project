@@ -43,8 +43,8 @@ public class Facade {
         else
         {
             double currentDays = ChronoUnit.DAYS.between(order.getStartDate(), LocalDate.now());
-            double allDays = ChronoUnit.DAYS.between(order.getStartDate(), order.getEndDate());
-            return currentDays/allDays;
+            double totalDays = ChronoUnit.DAYS.between(order.getStartDate(), order.getEndDate());
+            return currentDays/totalDays;
         }
     }
     

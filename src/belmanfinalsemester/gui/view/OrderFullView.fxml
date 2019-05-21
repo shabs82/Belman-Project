@@ -34,15 +34,15 @@
          </children>
       </VBox>
       <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="411.0" prefHeight="20.0" prefWidth="569.0" progress="0.0" secondaryProgress="0.0" />
-      <Label layoutX="54.0" layoutY="182.0" prefHeight="30.0" text="Employees assigned to order:" textFill="WHITE" />
-      <Label fx:id="lblEmployees" layoutX="263.0" layoutY="190.0" prefHeight="167.0" prefWidth="277.0" style="-fx-background-color: #004983;" />
+      <Label layoutX="24.0" layoutY="182.0" prefHeight="30.0" text="Employees assigned to order:" textFill="WHITE" />
+      <Label fx:id="lblEmployees" layoutX="251.0" layoutY="190.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: white;" />
       <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="72.0" prefHeight="30.0" prefWidth="120.0" text="Start Date :" textFill="WHITE" />
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="80.0" layoutY="144.0" prefHeight="30.0" prefWidth="139.0" text="Customer's Name :" textAlignment="JUSTIFY" textFill="WHITE" />
       <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="108.0" prefHeight="30.0" prefWidth="120.0" text="Delivery Date :" textFill="WHITE" />
       <Label fx:id="lblStartDate" layoutX="252.0" layoutY="72.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
       <Label fx:id="lblDeliveryDate" layoutX="252.0" layoutY="108.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
       <Label fx:id="lblCustomer" layoutX="252.0" layoutY="144.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
-      <Label layoutX="460.0" layoutY="390.0" text="Time Left : " textFill="WHITE" />
+      <Label layoutX="460.0" layoutY="390.0" text="Days Left : " textFill="WHITE" />
       <Label fx:id="lblLeftDate" layoutX="534.0" layoutY="385.0" text="Day" textFill="#dd5050">
          <font>
             <Font size="20.0" />

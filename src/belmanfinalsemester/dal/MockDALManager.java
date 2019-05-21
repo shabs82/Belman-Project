@@ -23,7 +23,7 @@ public class MockDALManager {
         o1.setStartDate(LocalDate.now().minusDays(5));
         o1.setEndDate(LocalDate.now().plusDays(3));
         o1.setTimeLeft(3); 
-        o1.setCustomerName("Chritiano Ronaldo");
+        o1.setCustomerName("Christiano Ronaldo");
         
         
         Order o2 = new Order();

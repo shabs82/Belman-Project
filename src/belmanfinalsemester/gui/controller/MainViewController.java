@@ -9,6 +9,7 @@ package belmanfinalsemester.gui.controller;
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.exception.BelmanException;
 import belmanfinalsemester.gui.model.MainModel;
+import belmanfinalsemester.gui.util.MessageBoxHelper;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -30,6 +31,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -130,14 +132,18 @@ public class MainViewController implements Initializable {
     @FXML
     private void dropDown(ActionEvent event) throws BelmanException {
         String selectedDepartment = combobox.getSelectionModel().getSelectedItem();
-        if(combobox.getSelectionModel().getSelectedItem() != null)
-        {
+        if(combobox.getSelectionModel().getSelectedItem() != null && 
+                combobox.getSelectionModel().getSelectedItem() == "Montage 1") {
             tvOrders.setItems(mModel.getOrders(selectedDepartment));
         }
+            else {
+                MessageBoxHelper.displayError("Select the Correct Department");
+            }
     }
 
     @FXML
     private void showOrderFullView(MouseEvent event) {
+        
         if(event.getClickCount() == 2)
         {
              
@@ -152,21 +158,38 @@ public class MainViewController implements Initializable {
                 
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                
+                stage.getIcons().add(new Image("/resources/images/belman_logo_retina.png"));
+                stage.setTitle("Belman");
+                
                 stage.show();
                 
-               Order order = tvOrders.getSelectionModel().getSelectedItem();         
-               controller.setOrderInfo(order);
+                Order order = tvOrders.getSelectionModel().getSelectedItem();         
+                controller.setOrderInfo(order);
                 
             } 
             catch (IOException ex) 
             {
-                Logger.getLogger(OrderTableViewController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(OrderFullViewController.class.getName()).log(Level.SEVERE, null, ex);
+                //ex.printStackTrace();
             }
         }
     }
 
     @FXML
-    private void searchOrders(KeyEvent event) {
-        tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
+    private void searchOrders(KeyEvent event) { 
+            if(combobox.getSelectionModel().getSelectedItem() == null){
+                 MessageBoxHelper.displayError("Select the right Department first.");
+                 txtFieldSearchBar.clear();
+            
+                    if(combobox.getSelectionModel().getSelectedItem() != null){
+                        tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
+            }
+    }           
+           else if(txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")){
+                 MessageBoxHelper.displayError("Search by Order Number.");
+                 txtFieldSearchBar.clear();
+           }       
     }
+
 }

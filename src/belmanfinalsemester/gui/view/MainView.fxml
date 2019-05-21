@@ -20,15 +20,15 @@
                <children>
                   <AnchorPane prefHeight="95.0" prefWidth="795.0">
                      <children>
-                        <Label fx:id="currentDate" layoutX="24.0" layoutY="90.0" text="CurrentDate" />
-                        <Label fx:id="currentTime" layoutX="100.0" layoutY="90.0" text="CurrentTime" />
+                        <Label fx:id="currentDate" layoutX="22.0" layoutY="90.0" text="CurrentDate" />
+                        <Label fx:id="currentTime" layoutX="106.0" layoutY="90.0" text="CurrentTime" />
                         <ImageView fitHeight="101.0" fitWidth="155.0" layoutX="320.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../resources/images/belman_logo_retina.png" />
                            </image>
                         </ImageView>
                         <JFXComboBox fx:id="combobox" focusColor="#030225" labelFloat="true" layoutX="596.0" layoutY="20.0" onAction="#dropDown" prefHeight="27.0" prefWidth="180.0" promptText="Department" unFocusColor="#060222" />
-                        <Label fx:id="currentweekday" layoutX="177.0" layoutY="90.0" text="Label" />
+                        <Label fx:id="currentweekday" layoutX="180.0" layoutY="90.0" text="Label" />
                         <JFXTextField fx:id="txtFieldSearchBar" layoutX="595.0" layoutY="75.0" onKeyReleased="#searchOrders" prefWidth="181.0" promptText="Search..." />
                      </children>
                   </AnchorPane>

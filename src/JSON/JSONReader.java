@@ -6,15 +6,11 @@
 package JSON;
 
 import belmanfinalsemester.dal.AvailableWorkers;
-import belmanfinalsemester.dal.ProductionOrder;
-import belmanfinalsemester.dal.DBConnector;
 import belmanfinalsemester.dal.DepartmentTasks;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -102,7 +98,6 @@ public class JSONReader {
     }
 
     private String reformatDate(String dateString) {
-
         String replaceString = dateString.replace("/", "");
         replaceString = replaceString.replace("Date(", "");
         replaceString = replaceString.replace("+0200)", "");

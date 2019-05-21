@@ -5,7 +5,6 @@
  */
 package belmanfinalsemester;
 
-import JSON.JSONReader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,7 +22,7 @@ public class BelmanFinalSemester extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/MainView.fxml"));
         Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("images/belman_logo_retina.png"));
+        stage.getIcons().add(new Image("/resources/images/belman_logo_retina.png"));
         stage.setTitle("Belman");
         
         stage.setScene(scene);

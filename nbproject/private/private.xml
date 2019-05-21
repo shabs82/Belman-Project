@@ -2,6 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/gui/model/MainModel.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/dal/DBConnector.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/JSON/JSONReader.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/dal/AvailableWorkers.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/resources/data/database.properties</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/resources/css/CSS.css</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/dal/DepartmentTasks.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/JSON/JSON.txt</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/BelmanFinalSemester.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/gui/controller/OrderFullViewController.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/exception/BelmanException.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/bll/Facade.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/gui/controller/MainViewController.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/gui/util/MessageBoxHelper.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/dal/MockDALManager.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/be/Order.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/dal/ProductionOrder.java</file>
+            <file>file:/C:/Users/Test/Desktop/Belman%20project%20semester%202/Belman-Project/src/belmanfinalsemester/gui/controller/OrderTableViewController.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -137,7 +137,7 @@ public class MainViewController implements Initializable {
             tvOrders.setItems(mModel.getOrders(selectedDepartment));
         }
             else {
-                MessageBoxHelper.displayError("Select the Correct Department");
+                MessageBoxHelper.displayError("Please select your respective Department");
             }
     }
 
@@ -181,15 +181,25 @@ public class MainViewController implements Initializable {
             if(combobox.getSelectionModel().getSelectedItem() == null){
                  MessageBoxHelper.displayError("Select the right Department first.");
                  txtFieldSearchBar.clear();
-            
-                    if(combobox.getSelectionModel().getSelectedItem() != null){
-                        tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
             }
-    }           
-           else if(txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")){
-                 MessageBoxHelper.displayError("Search by Order Number.");
-                 txtFieldSearchBar.clear();
+                 if(combobox.getSelectionModel().getSelectedItem() != null && txtFieldSearchBar.getText()!=null){
+                     if(!txtFieldSearchBar.getText().matches("[0.-9.]*") && 
+                        txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")){
+                           MessageBoxHelper.displayError("Search by Order Number.");
+                           txtFieldSearchBar.clear();
+                     }else{
+                        tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
+                 }
+
+//
+//           else if(!txtFieldSearchBar.getText().matches("[0.-9.]*") && 
+//                        txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")){
+//                 MessageBoxHelper.displayError("Search by Order Number.");
+//                 txtFieldSearchBar.clear();
            }       
+        }
     }
 
-}
+    
+    //"^[a-zA-Z]*$"
+

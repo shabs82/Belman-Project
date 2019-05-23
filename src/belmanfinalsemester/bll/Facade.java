@@ -24,8 +24,9 @@ public class Facade {
    // MockDALManager mcDalManager = new MockDALManager();
     DALManager dalManager = new DALManager();
     
-    public List<Order> getOrders (){
-        List<Order> orders =  dalManager.getAllOrders();
+    public List<Order> getOrders (Department departmentName){
+        LocalDate currentDate = LocalDate.now();
+        List<Order> orders =  dalManager.getOrders(departmentName,currentDate);
         for(Order o : orders){
             double progress = calculateProgress(o);
             o.setProgress(progress);

@@ -22,8 +22,8 @@ public class MainModel {
     private ObservableList<Order> obList = FXCollections.observableArrayList();
     private ObservableList<Order> filteredList = FXCollections.observableArrayList();
     
-    public ObservableList<Order> getOrders(String departmentName){
-        List<Order> orders = facade.getOrders();
+    public ObservableList<Order> getOrders(Department departmentName){
+        List<Order> orders = facade.getOrders(departmentName);
         obList.setAll(orders);
         return obList;
     }

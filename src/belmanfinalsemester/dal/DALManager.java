@@ -20,26 +20,33 @@ import java.util.logging.Logger;
  *
  * @author MockDALManager
  */
-    public class DALManager {
-        private List<Order> orderInfo;
-        OrderDAO orderDAO;
- DepartmentDAO depDAO;
+public class DALManager {
+
+    private List<Order> orderInfo;
+    OrderDAO orderDAO;
+    DepartmentDAO depDAO;
+
     public DALManager() {
         try {
-            this.orderDAO= new OrderDAO();
+            this.orderDAO = new OrderDAO();
             this.depDAO = new DepartmentDAO();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DALManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public List<Order> getAllOrders(){
-        LocalDate currentDate = LocalDate.now();
-        Department Mock = new Department(2,"Bælg");
-        List<Order> currentOrders = orderDAO.getAllOrdersFromDept(Mock, currentDate);
+
+    public List<Order> getAllOrders(Department departmentName, LocalDate currentDate) {
+
+        List<Order> currentOrders = orderDAO.getAllOrdersFromDept(departmentName, currentDate);
         return currentOrders;
-  }   
-    public List<Department> getDepartments() throws SQLException{
+    }
+
+    public List<Department> getDepartments() throws SQLException {
         return depDAO.getDepartment();
+    }
+
+    public List<Order> getOrders(Department departmentName, LocalDate currentDate) {
+        List<Order> currentOrders = orderDAO.getOrders(departmentName, currentDate);
+        return currentOrders;
     }
 }

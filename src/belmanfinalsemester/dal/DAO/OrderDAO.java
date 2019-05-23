@@ -43,9 +43,9 @@ public class OrderDAO {
                     + "    ON CO.Order_ID = DO.Order_ID "
                     + "    JOIN [dbo].[Customer] AS C "
                     + "    ON c.[Customer_ID] = CO.Customer_ID "
-                    + "    WHERE D.DEPT_NAME = ? AND D.Finished_Order = 0 AND d.Start_Date <= ? ";
+                    + "    WHERE DO.Dept_Id = ? AND DO.Finished_Order = 0 AND DO.Start_Date <= ? ";
             PreparedStatement stmt = con.prepareStatement(Orders);
-            stmt.setString(1, dep.getDeptName());
+            stmt.setInt(1, dep.getDeptID());
             stmt.setDate(2, java.sql.Date.valueOf(currentDate));
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

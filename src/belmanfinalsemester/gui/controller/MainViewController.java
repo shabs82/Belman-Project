@@ -18,6 +18,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
@@ -75,8 +76,9 @@ public class MainViewController implements Initializable {
     @FXML
 
     TableView<Order> tvOrders;
-    
+
     private ScheduledExecutorService executor;
+    private List<Department> depList;
 
     /**
      * Initializes the controller class.
@@ -86,7 +88,7 @@ public class MainViewController implements Initializable {
         initializeComboBox();
         setDateAndTime();
         executor = Executors.newScheduledThreadPool(2);
-        executor.scheduleAtFixedRate(()->initializeThreading(), 0, 1, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(() -> initializeThreading(), 0, 1, TimeUnit.SECONDS);
         //loadTableViewFXML();
 
         setTableColumn();
@@ -94,18 +96,21 @@ public class MainViewController implements Initializable {
 
     private void initializeComboBox() {
         try {
-            for (Department department :  mModel.getDepartments()) {
-                combobox.getItems().add(department.getDeptName());
-            }
+            depList = mModel.getDepartments();
         } catch (SQLException ex) {
             Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        for (Department department : depList) {
+            combobox.getItems().add(department.getDeptName());
+        }
+
     }
-    private void initializeThreading(){
+
+    private void initializeThreading() {
         Platform.runLater(() -> {
-                setDateAndTime();
-            });
+            setDateAndTime();
+        });
     }
 
     public void setDateAndTime() {
@@ -146,9 +151,10 @@ public class MainViewController implements Initializable {
 //    }
     @FXML
     private void dropDown(ActionEvent event) throws BelmanException, SQLException {
-        String selectedDepartment = combobox.getSelectionModel().getSelectedItem();
+        int selectedDepartment = combobox.getSelectionModel().getSelectedIndex();
+
         if (combobox.getSelectionModel().getSelectedItem() != null) {
-            tvOrders.setItems(mModel.getOrders(selectedDepartment));
+            tvOrders.setItems(mModel.getOrders(depList.get(selectedDepartment)));
         } else {
             MessageBoxHelper.displayError("Please select your respective Department");
         }
@@ -195,9 +201,8 @@ public class MainViewController implements Initializable {
             if (!txtFieldSearchBar.getText().matches("[0.-9.]*")
                     && txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")) {
                 MessageBoxHelper.displayError("Search by Order Number.");
-            txtFieldSearchBar.clear();
-            } 
-            else {
+                txtFieldSearchBar.clear();
+            } else {
                 tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
             }
 
@@ -209,5 +214,3 @@ public class MainViewController implements Initializable {
         }
     }
 }
-
-

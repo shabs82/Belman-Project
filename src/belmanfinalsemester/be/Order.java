@@ -30,11 +30,10 @@ public class Order {
         this.customerName = customerName;
     }
     
-    public Order (String orderNumber, LocalDate startDate, LocalDate endDate, int timeLeft, String customerName){
+    public Order (String orderNumber, LocalDate startDate, LocalDate endDate, String customerName){
         this.orderNumber = orderNumber;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.timeLeft = timeLeft;
         this.customerName = customerName;
     }
     

@@ -6,6 +6,7 @@
 package belmanfinalsemester.gui.controller;
 
 //import belmanfinalsemester.BelmanException;
+import belmanfinalsemester.be.Department;
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.exception.BelmanException;
 import belmanfinalsemester.gui.model.MainModel;
@@ -14,6 +15,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -91,10 +93,13 @@ public class MainViewController implements Initializable {
     }
 
     private void initializeComboBox() {
-        combobox.getItems().add("Halvfab");
-        combobox.getItems().add("Bælg");
-        combobox.getItems().add("Montage 1");
-        combobox.getItems().add("Montage 2");
+        try {
+            for (Department department :  mModel.getDepartments()) {
+                combobox.getItems().add(department.getDeptName());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
     private void initializeThreading(){
@@ -140,10 +145,9 @@ public class MainViewController implements Initializable {
 //        }
 //    }
     @FXML
-    private void dropDown(ActionEvent event) throws BelmanException {
+    private void dropDown(ActionEvent event) throws BelmanException, SQLException {
         String selectedDepartment = combobox.getSelectionModel().getSelectedItem();
-        if (combobox.getSelectionModel().getSelectedItem() != null
-                && combobox.getSelectionModel().getSelectedItem() == "Montage 1") {
+        if (combobox.getSelectionModel().getSelectedItem() != null) {
             tvOrders.setItems(mModel.getOrders(selectedDepartment));
         } else {
             MessageBoxHelper.displayError("Please select your respective Department");
@@ -192,7 +196,8 @@ public class MainViewController implements Initializable {
                     && txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")) {
                 MessageBoxHelper.displayError("Search by Order Number.");
             txtFieldSearchBar.clear();
-            } else {
+            } 
+            else {
                 tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
             }
 
@@ -205,5 +210,4 @@ public class MainViewController implements Initializable {
     }
 }
 
-//"^[a-zA-Z]*$"
 

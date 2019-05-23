@@ -5,8 +5,10 @@
  */
 package belmanfinalsemester.gui.model;
 
+import belmanfinalsemester.be.Department;
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.bll.Facade;
+import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,5 +32,9 @@ public class MainModel {
     {
         filteredList.setAll(facade.searchOrders(obList, key));
         return filteredList;
+    }
+    
+    public List<Department> getDepartments() throws SQLException{
+        return facade.getDepartments();
     }
 }

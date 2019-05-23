@@ -5,8 +5,11 @@
  */
 package belmanfinalsemester.bll;
 
+import belmanfinalsemester.be.Department;
 import belmanfinalsemester.be.Order;
+import belmanfinalsemester.dal.DALManager;
 import belmanfinalsemester.dal.MockDALManager;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -18,10 +21,11 @@ import java.util.List;
  */
 public class Facade {
     
-    MockDALManager mcDalManager = new MockDALManager();
+   // MockDALManager mcDalManager = new MockDALManager();
+    DALManager dalManager = new DALManager();
     
     public List<Order> getOrders (){
-        List<Order> orders =  mcDalManager.getOrders();
+        List<Order> orders =  dalManager.getAllOrders();
         for(Order o : orders){
             double progress = calculateProgress(o);
             o.setProgress(progress);
@@ -53,4 +57,7 @@ public class Facade {
         return filteredList;
     }
     
+    public List<Department> getDepartments() throws SQLException{
+        return dalManager.getDepartments();
+    }
 }

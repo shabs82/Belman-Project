@@ -17,9 +17,9 @@
                <children>
                   <AnchorPane prefHeight="61.0" prefWidth="600.0">
                      <children>
-                        <Label fx:id="lblOrderNum" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="18.0" prefHeight="26.0" prefWidth="323.0" text="OrderNumber" textAlignment="CENTER">
+                        <Label fx:id="lblOrderNum" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="20.0" prefHeight="27.0" prefWidth="236.0" text="OrderNumber" textAlignment="CENTER">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
                         <ImageView fitHeight="55.0" fitWidth="89.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -27,6 +27,11 @@
                               <Image url="@../../../resources/images/belman_logo_retina.png" />
                            </image>
                         </ImageView>
+                        <Label layoutX="151.0" layoutY="17.0" text="Order Number">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>

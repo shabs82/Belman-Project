@@ -18,8 +18,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,6 +73,8 @@ public class MainViewController implements Initializable {
     @FXML
 
     TableView<Order> tvOrders;
+    
+    private ScheduledExecutorService executor;
 
     /**
      * Initializes the controller class.
@@ -77,6 +83,8 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         initializeComboBox();
         setDateAndTime();
+        executor = Executors.newScheduledThreadPool(2);
+        executor.scheduleAtFixedRate(()->initializeThreading(), 0, 1, TimeUnit.SECONDS);
         //loadTableViewFXML();
 
         setTableColumn();
@@ -89,10 +97,15 @@ public class MainViewController implements Initializable {
         combobox.getItems().add("Montage 2");
 
     }
+    private void initializeThreading(){
+        Platform.runLater(() -> {
+                setDateAndTime();
+            });
+    }
 
     public void setDateAndTime() {
         SimpleDateFormat forDate = new SimpleDateFormat("YYYY/MM/dd");
-        SimpleDateFormat forTime = new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat forTime = new SimpleDateFormat("HH:mm:ss aa");
         SimpleDateFormat forDayOfWeek = new SimpleDateFormat("EEEE");
         Date dateForDate = new Date();
 

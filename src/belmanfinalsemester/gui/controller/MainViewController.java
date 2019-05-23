@@ -178,7 +178,7 @@ public class MainViewController implements Initializable {
             if (!txtFieldSearchBar.getText().matches("[0.-9.]*")
                     && txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")) {
                 MessageBoxHelper.displayError("Search by Order Number.");
-                txtFieldSearchBar.clear();
+            txtFieldSearchBar.clear();
             } else {
                 tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
             }

@@ -24,12 +24,12 @@ public class DepartmentTasks {
  public DepartmentTasks() {
         try {
             connector = new DBConnector();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(DepartmentTasks.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+            catch (FileNotFoundException ex) {
+             Logger.getLogger(DepartmentTasks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- public void addDepartmentTasks(String Dept_ID , Date Start_Date, Date End_Date,Boolean Finished_Order, String Order_ID) throws Exception{
-    
+ public void addDepartmentTasks(String Dept_ID , Date Start_Date, Date End_Date,Boolean Finished_Order, String Order_ID) throws Exception{   
     try (Connection con = connector.getConnection()) {
             String sql = "INSERT INTO Department_Order (Dept_ID,Start_Date,End_Date,Finished_Order,Order_ID) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -41,12 +41,10 @@ public class DepartmentTasks {
             stmt.execute();
 
         }
-        catch(SQLException ex)
-        {
+        catch(SQLException ex){
             throw new Exception("Cannot connect to the database");
         }
-    
-}
+    }
 }
 
     

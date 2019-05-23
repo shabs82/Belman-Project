@@ -14,27 +14,23 @@ import java.sql.SQLException;
  *
  * @author kulsoom-Abbas
  */
-public class ProductionOrder {
-    
-    private DBConnector connector;
+    public class ProductionOrder {
+         private DBConnector connector;
      
- public ProductionOrder(DBConnector connector) {
+    public ProductionOrder(DBConnector connector) {
         this.connector = connector;
     }
- public void addProductionOrder(String name , Date time) throws Exception{
-    
-    try (Connection con = connector.getConnection()) {
+ 
+    public void addProductionOrder(String name , Date time) throws Exception{    
+        try (Connection con = connector.getConnection()) {
             String sql = "INSERT INTO ORDER (Customer_Name, Delivery_Time) VALUES(?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, name);
             stmt.setDate(2,time);
             stmt.executeUpdate();
-
         }
-        catch(SQLException ex)
-        {
+        catch(SQLException ex){
             throw new Exception("Cannot connect to the database");
-        }
-    
-}
+        }   
+    }
 }

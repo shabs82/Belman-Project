@@ -20,10 +20,8 @@ import java.util.Properties;
 public class DBConnector {
     private SQLServerDataSource ds;
 
-    public DBConnector() throws FileNotFoundException
-    {
-        try
-        {
+    public DBConnector() throws FileNotFoundException{
+        try{
             Properties databaseProperties = new Properties();
             databaseProperties.load(new FileInputStream("src/data/database.properties"));
             ds = new SQLServerDataSource();
@@ -31,16 +29,15 @@ public class DBConnector {
             ds.setDatabaseName(databaseProperties.getProperty("Database"));
             ds.setUser(databaseProperties.getProperty("Login"));
             ds.setPassword(databaseProperties.getProperty("password"));
-        }catch(IOException e)
-        {
+        }
+        catch(IOException e){
             e.printStackTrace();
         }
     }
-       public Connection getConnection() throws SQLServerException  
-    {
-        return ds.getConnection();
-    }
+       public Connection getConnection() throws SQLServerException  {
+            return ds.getConnection();
         }
+    }
 
     
 

@@ -27,16 +27,16 @@
                               <Image url="@../../../resources/images/belman_logo_retina.png" />
                            </image>
                         </ImageView>
-                        <JFXComboBox fx:id="combobox" focusColor="#030225" labelFloat="true" layoutX="596.0" layoutY="20.0" onAction="#dropDown" prefHeight="27.0" prefWidth="180.0" promptText="Department" unFocusColor="#060222" />
+                        <JFXComboBox fx:id="combobox" editable="true" focusColor="#194981" labelFloat="true" layoutX="596.0" layoutY="20.0" onAction="#dropDown" prefHeight="27.0" prefWidth="180.0" promptText="Department" stylesheets="@../../../resources/css/CSS.css" unFocusColor="#194981" />
                         <Label fx:id="currentweekday" layoutX="180.0" layoutY="90.0" text="Label" />
-                        <JFXTextField fx:id="txtFieldSearchBar" layoutX="595.0" layoutY="75.0" onKeyReleased="#searchOrders" prefWidth="181.0" promptText="Search..." />
+                        <JFXTextField fx:id="txtFieldSearchBar" focusColor="#194981" layoutX="595.0" layoutY="75.0" onKeyReleased="#searchOrders" prefWidth="181.0" promptText="Search..." />
                      </children>
                   </AnchorPane>
                </children>
             </HBox>
          </top>
          <center>
-            <TableView fx:id="tvOrders" onMouseClicked="#showOrderFullView" prefHeight="587.0" prefWidth="797.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tvOrders" onMouseClicked="#showOrderFullView" prefHeight="587.0" prefWidth="797.0" stylesheets="@../../../resources/css/CSS.css" BorderPane.alignment="CENTER">
                <columns>
                   <TableColumn fx:id="clmOrderNum" prefWidth="267.7785816192627" text="Order Number" />
                   <TableColumn fx:id="clmStartDate" prefWidth="187.44290161132812" text="Start Date" />

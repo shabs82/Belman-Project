@@ -1,8 +1,8 @@
 
 
 #AnchorPane{
-    -fx-background-color: #1F2324;
-    -fx-border-width: 2.5;
+    -fx-background-color:#194981;
+    -fx-border-width: 2;
     -fx-border-color: black;
     
     
@@ -16,12 +16,13 @@
 
 
 
-#mainTableview{
+#tvOrders{
     -fx-border-color: white;
     -fx-background-color:#DDDDDD;
     -fx-border-width: 3;
     -fx-background-radius: 4.5;
-     -fx-table-cell-border-color: black;
+   /*  -fx-table-cell-border-color: black;*/
+   -fx-table-cell-:black;
     -fx-border-radius:4.5;   
 }
 
@@ -31,24 +32,43 @@
     -fx-border-width: 1;
 }
 
-
 #combobox{
-     -fx-background-color: #004983;
-     -fx-text-fill: white;
+     -fx-background-color: #DDDDDD;
+    -fx-prompt-text-fill: #194981;
+    -fx-text-fill: black;
+-fx-control-inner-background: #DDDDDD;
+   
+}
+
+
+
+#combobox:hover{
+     -fx-background-color:#194981;
+     
     
 }
+
+/*#combobox:pressed{
+     -fx-background-color:#DDDDDD;
+     
+    
+}
+*/
+
+
+
 
 /*-----------------------------------------------------------------------------*/
 
 #btnfinish{
-     -fx-background-color: #004983;
+     -fx-background-color:#1F2324;
      -fx-text-fill: white;
 }
    
 
 #OrderInfoAnchorPane{
-  -fx-background-color: #1F2324;
-    
+  /*-fx-background-color: #1F2324;*/
+    -fx-background-color: #194981;
 }
 
 #headVbox{

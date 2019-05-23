@@ -83,7 +83,7 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         initializeComboBox();
         executor = Executors.newScheduledThreadPool(2);
-        executor.scheduleAtFixedRate(() -> initialiseTreading(), 0, 1, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(() -> initialiseThreading(), 0, 1, TimeUnit.SECONDS);
         //setDateAndTime();
         //loadTableViewFXML();
 
@@ -98,7 +98,7 @@ public class MainViewController implements Initializable {
 
     }
 
-    private void initialiseTreading() {
+    private void initialiseThreading() {
         Platform.runLater(() -> {
             setDateAndTime();
         });

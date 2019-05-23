@@ -18,8 +18,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,7 +49,7 @@ import javafx.stage.Stage;
 public class MainViewController implements Initializable {
 
     private MainModel mModel = new MainModel();
-    
+
     @FXML
     private Label currentDate;
     @FXML
@@ -67,9 +71,10 @@ public class MainViewController implements Initializable {
     @FXML
     private TableColumn<Order, Integer> clmTimeLeft;
     @FXML
-       
-     TableView<Order> tvOrders;
-    
+
+    TableView<Order> tvOrders;
+
+    private ScheduledExecutorService executor;
 
     /**
      * Initializes the controller class.
@@ -77,24 +82,31 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializeComboBox();
-        setDateAndTime();
+        executor = Executors.newScheduledThreadPool(2);
+        executor.scheduleAtFixedRate(() -> initialiseTreading(), 0, 1, TimeUnit.SECONDS);
+        //setDateAndTime();
         //loadTableViewFXML();
-        
+
         setTableColumn();
     }
-    
-    private void initializeComboBox()
-    {
+
+    private void initializeComboBox() {
         combobox.getItems().add("Halvfab");
         combobox.getItems().add("Bælg");
         combobox.getItems().add("Montage 1");
         combobox.getItems().add("Montage 2");
-        
+
+    }
+
+    private void initialiseTreading() {
+        Platform.runLater(() -> {
+            setDateAndTime();
+        });
     }
 
     public void setDateAndTime() {
         SimpleDateFormat forDate = new SimpleDateFormat("YYYY/MM/dd");
-        SimpleDateFormat forTime = new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat forTime = new SimpleDateFormat("HH:mm:ss aa");
         SimpleDateFormat forDayOfWeek = new SimpleDateFormat("EEEE");
         Date dateForDate = new Date();
 
@@ -103,15 +115,15 @@ public class MainViewController implements Initializable {
         currentweekday.setText(forDayOfWeek.format(dateForDate));
 
     }
-    private void setTableColumn(){
-       clmOrderNum.setCellValueFactory(new PropertyValueFactory("orderNumber"));
-       clmStartDate.setCellValueFactory(new PropertyValueFactory("startDate"));
-       clmEndDate.setCellValueFactory(new PropertyValueFactory("endDate"));
-       clmTimeLeft.setCellValueFactory(new PropertyValueFactory("timeLeft"));
-    
+
+    private void setTableColumn() {
+        clmOrderNum.setCellValueFactory(new PropertyValueFactory("orderNumber"));
+        clmStartDate.setCellValueFactory(new PropertyValueFactory("startDate"));
+        clmEndDate.setCellValueFactory(new PropertyValueFactory("endDate"));
+        clmTimeLeft.setCellValueFactory(new PropertyValueFactory("timeLeft"));
+
     }
-    
-    
+
 //   public void setOrdersTable(String departmentName){
 //        tvOrders.setItems(mModel.getOrders(departmentName));
 //   }
@@ -128,48 +140,40 @@ public class MainViewController implements Initializable {
 //            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-
     @FXML
     private void dropDown(ActionEvent event) throws BelmanException {
         String selectedDepartment = combobox.getSelectionModel().getSelectedItem();
-        if(combobox.getSelectionModel().getSelectedItem() != null && 
-                combobox.getSelectionModel().getSelectedItem() == "Montage 1") {
+        if (combobox.getSelectionModel().getSelectedItem() != null
+                && combobox.getSelectionModel().getSelectedItem() == "Bælg") {
             tvOrders.setItems(mModel.getOrders(selectedDepartment));
+        } else {
+            MessageBoxHelper.displayError("Please select your respective Department");
         }
-            else {
-                MessageBoxHelper.displayError("Please select your respective Department");
-            }
     }
 
     @FXML
     private void showOrderFullView(MouseEvent event) {
-        
-        if(event.getClickCount() == 2)
-        {
-             
-            try 
-            {
+        if (event.getClickCount() == 2) {
+            try {
                 Parent root;  //FXMLLoader.load(getClass().getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass()
                         .getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
                 root = (Parent) fxmlLoader.load();
                 OrderFullViewController controller = fxmlLoader.getController();
                 Scene scene = new Scene(root);
-                
+
                 Stage stage = new Stage();
                 stage.setScene(scene);
-                
+
                 stage.getIcons().add(new Image("/resources/images/belman_logo_retina.png"));
                 stage.setTitle("Belman");
-                
+
                 stage.show();
-                
-                Order order = tvOrders.getSelectionModel().getSelectedItem();         
+
+                Order order = tvOrders.getSelectionModel().getSelectedItem();
                 controller.setOrderInfo(order);
-                
-            } 
-            catch (IOException ex) 
-            {
+
+            } catch (IOException ex) {
                 Logger.getLogger(OrderFullViewController.class.getName()).log(Level.SEVERE, null, ex);
                 //ex.printStackTrace();
             }
@@ -177,29 +181,28 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void searchOrders(KeyEvent event) { 
-            if(combobox.getSelectionModel().getSelectedItem() == null){
-                 MessageBoxHelper.displayError("Select the right Department first.");
-                 txtFieldSearchBar.clear();
+    private void searchOrders(KeyEvent event) {
+        if (combobox.getSelectionModel().getSelectedItem() == null) {
+            MessageBoxHelper.displayError("Please select the right Department first.");
+            txtFieldSearchBar.clear();
+        }
+        if (combobox.getSelectionModel().getSelectedItem() != null && txtFieldSearchBar.getText() != null) {
+            if (!txtFieldSearchBar.getText().matches("[0.-9.]*")
+                    && txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")) {
+                MessageBoxHelper.displayError("Please search by Order Number.");
+                txtFieldSearchBar.clear();
+            } else {
+                tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
             }
-                 if(combobox.getSelectionModel().getSelectedItem() != null && txtFieldSearchBar.getText()!=null){
-                     if(!txtFieldSearchBar.getText().matches("[0.-9.]*") && 
-                        txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")){
-                           MessageBoxHelper.displayError("Search by Order Number.");
-                           txtFieldSearchBar.clear();
-                     }else{
-                        tvOrders.setItems(mModel.searchOrders(txtFieldSearchBar.getText()));
-                 }
 
 //
 //           else if(!txtFieldSearchBar.getText().matches("[0.-9.]*") && 
 //                        txtFieldSearchBar.getText().matches("^[a-zA-Z]*$")){
 //                 MessageBoxHelper.displayError("Search by Order Number.");
 //                 txtFieldSearchBar.clear();
-           }       
         }
     }
+}
 
-    
-    //"^[a-zA-Z]*$"
+//"^[a-zA-Z]*$"
 

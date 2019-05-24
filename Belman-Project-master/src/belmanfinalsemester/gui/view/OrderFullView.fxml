@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="OrderInfoAnchorPane" prefHeight="515.0" prefWidth="600.0" stylesheets="@../../../resources/css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.OrderFullViewController">
+   <children>
+      <VBox layoutX="14.0" layoutY="8.0" prefHeight="515.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox id="headVbox" prefHeight="59.0" prefWidth="600.0">
+               <children>
+                  <AnchorPane prefHeight="61.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="lblOrderNum" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="20.0" prefHeight="27.0" prefWidth="236.0" text="OrderNumber" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="55.0" fitWidth="89.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/images/belman_logo_retina.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="151.0" layoutY="17.0" text="Order Number">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="411.0" prefHeight="20.0" prefWidth="569.0" progress="0.0" secondaryProgress="0.0" />
+      <Label layoutX="24.0" layoutY="182.0" prefHeight="30.0" text="Employees assigned to order:" textFill="WHITE" />
+      <Label fx:id="lblEmployees" layoutX="251.0" layoutY="190.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: white;" />
+      <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="72.0" prefHeight="30.0" prefWidth="120.0" text="Start Date :" textFill="WHITE" />
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="80.0" layoutY="144.0" prefHeight="30.0" prefWidth="139.0" text="Customer's Name :" textAlignment="JUSTIFY" textFill="WHITE" />
+      <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="108.0" prefHeight="30.0" prefWidth="120.0" text="Delivery Date :" textFill="WHITE" />
+      <Label fx:id="lblStartDate" layoutX="252.0" layoutY="72.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
+      <Label fx:id="lblDeliveryDate" layoutX="252.0" layoutY="108.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
+      <Label fx:id="lblCustomer" layoutX="252.0" layoutY="144.0" prefHeight="30.0" prefWidth="300.0" text="Label" textFill="WHITE" />
+      <Label layoutX="460.0" layoutY="390.0" text="Days Left : " textFill="WHITE" />
+      <Label fx:id="lblLeftDate" layoutX="534.0" layoutY="385.0" text="Day" textFill="#dd5050">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXButton id="btnfinish" fx:id="btnfinish" layoutX="236.0" layoutY="453.0" prefHeight="29.0" prefWidth="161.0" text="Finish" />
+   </children>
+</AnchorPane>

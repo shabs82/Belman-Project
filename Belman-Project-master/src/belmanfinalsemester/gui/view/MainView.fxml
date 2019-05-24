@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="800.0" stylesheets="@../../../resources/css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.MainViewController">
+   <children>
+      <BorderPane fx:id="MainBorderPane" prefHeight="549.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox id="mainHbox" prefHeight="81.0" prefWidth="595.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="95.0" prefWidth="795.0">
+                     <children>
+                        <Label fx:id="currentDate" layoutX="22.0" layoutY="90.0" text="CurrentDate" />
+                        <Label fx:id="currentTime" layoutX="106.0" layoutY="90.0" text="CurrentTime" />
+                        <ImageView fitHeight="101.0" fitWidth="155.0" layoutX="320.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/images/belman_logo_retina.png" />
+                           </image>
+                        </ImageView>
+                        <JFXComboBox fx:id="combobox" editable="true" focusColor="#194981" labelFloat="true" layoutX="596.0" layoutY="20.0" onAction="#dropDown" prefHeight="27.0" prefWidth="180.0" promptText="Department" stylesheets="@../../../resources/css/CSS.css" unFocusColor="#194981" />
+                        <Label fx:id="currentweekday" layoutX="191.0" layoutY="90.0" text="Label" />
+                        <JFXTextField fx:id="txtFieldSearchBar" focusColor="#194981" layoutX="595.0" layoutY="75.0" onKeyReleased="#searchOrders" prefWidth="181.0" promptText="Search..." />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <TableView fx:id="tvOrders" onMouseClicked="#showOrderFullView" prefHeight="587.0" prefWidth="797.0" stylesheets="@../../../resources/css/CSS.css" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="clmOrderNum" prefWidth="267.7785816192627" text="Order Number" />
+                  <TableColumn fx:id="clmStartDate" prefWidth="187.44290161132812" text="Start Date" />
+                  <TableColumn fx:id="clmEndDate" prefWidth="155.55706787109375" text="End Date" />
+                  <TableColumn fx:id="clmTimeLeft" prefWidth="187.0" text="Time Left" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

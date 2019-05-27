@@ -10,6 +10,9 @@ import belmanfinalsemester.be.Order;
 import belmanfinalsemester.bll.Facade;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -19,13 +22,41 @@ import javafx.collections.ObservableList;
  */
 public class MainModel {
     private Facade facade = new Facade();
+    private Department selectedDepartment;
     private ObservableList<Order> obList = FXCollections.observableArrayList();
     private ObservableList<Order> filteredList = FXCollections.observableArrayList();
     
-    public ObservableList<Order> getOrders(Department departmentName){
-        List<Order> orders = facade.getOrders(departmentName);
+    public MainModel()
+    {
+        runOrderObserver();
+    }
+    
+    public void setDepartment(Department d)
+    {
+        this.selectedDepartment = d;
+    }
+    
+    public ObservableList<Order> getOrders(){
+        List<Order> orders = facade.getOrders(selectedDepartment);
         obList.setAll(orders);
         return obList;
+    }
+    
+    private void runOrderObserver()
+    {
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        executor.scheduleAtFixedRate(() -> updateOrders(), 5, 5, TimeUnit.SECONDS);
+        
+        
+    }
+    
+    private void updateOrders()
+    {
+        if(selectedDepartment != null)
+        {
+            List<Order> updatedOrders = facade.getOrders(selectedDepartment);
+            obList.setAll(updatedOrders);
+        }
     }
     
     public ObservableList<Order> searchOrders(String key)

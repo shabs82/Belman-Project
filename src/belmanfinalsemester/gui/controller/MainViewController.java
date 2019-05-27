@@ -154,7 +154,8 @@ public class MainViewController implements Initializable {
         int selectedDepartment = combobox.getSelectionModel().getSelectedIndex();
 
         if (combobox.getSelectionModel().getSelectedItem() != null) {
-            tvOrders.setItems(mModel.getOrders(depList.get(selectedDepartment)));
+            mModel.setDepartment(depList.get(selectedDepartment));
+            tvOrders.setItems(mModel.getOrders());
         } else {
             MessageBoxHelper.displayError("Please select your respective Department");
         }

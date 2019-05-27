@@ -12,8 +12,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -178,7 +176,7 @@ public class DatabaseWriter {
 
         } catch (SQLException ex) {
             System.out.println(ex);
-//throw new Exception("Cannot connect to the database");
+            //throw new Exception("Cannot connect to the database");
         }
 
     }

@@ -8,6 +8,7 @@ package belmanfinalsemester.gui.model;
 import belmanfinalsemester.be.Department;
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.bll.Facade;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -45,9 +46,7 @@ public class MainModel {
     private void runOrderObserver()
     {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(() -> updateOrders(), 5, 5, TimeUnit.SECONDS);
-        
-        
+        executor.scheduleAtFixedRate(() -> updateOrders(), 5, 5, TimeUnit.SECONDS);   
     }
     
     private void updateOrders()
@@ -68,4 +67,8 @@ public class MainModel {
     public List<Department> getDepartments() throws SQLException{
         return facade.getDepartments();
     }
+    
+     public void submitTask(Order order) throws SQLServerException, SQLException {
+         facade.submitTask(selectedDepartment, order);
+     }
 }

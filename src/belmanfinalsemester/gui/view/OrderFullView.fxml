@@ -53,6 +53,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXButton id="btnfinish" fx:id="btnfinish" layoutX="236.0" layoutY="453.0" prefHeight="29.0" prefWidth="161.0" text="Finish" />
+      <JFXButton id="btnfinish" fx:id="btnfinish" layoutX="236.0" layoutY="453.0" onAction="#finishTask" prefHeight="29.0" prefWidth="161.0" text="Finish" />
    </children>
 </AnchorPane>

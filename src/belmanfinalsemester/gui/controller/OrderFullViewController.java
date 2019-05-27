@@ -6,10 +6,13 @@
 package belmanfinalsemester.gui.controller;
 
 import belmanfinalsemester.be.Order;
+import belmanfinalsemester.gui.model.MainModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -20,6 +23,9 @@ import javafx.scene.control.Label;
  * @author Test
  */
 public class OrderFullViewController implements Initializable {
+    
+    private MainModel model;
+    private Order order;
 
     @FXML
     private JFXProgressBar progressBar;
@@ -45,10 +51,12 @@ public class OrderFullViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //TODO
     }    
- 
     
-    
-    public void setOrderInfo(Order currentOrder){   
+    public void injectModel(MainModel model){
+        this.model = model;
+    }
+    public void setOrderInfo(Order currentOrder){ 
+     this.order = currentOrder;
      lblOrderNum.setText(currentOrder.getOrderNumber());
      lblStartDate.setText(currentOrder.getStartDate().toString());
      lblDeliveryDate.setText(currentOrder.getEndDate().toString());
@@ -56,5 +64,10 @@ public class OrderFullViewController implements Initializable {
      lblCustomer.setText(currentOrder.getCustomerName());
      progressBar.setProgress(currentOrder.getProgress() );
     
+    }
+
+    @FXML
+    private void finishTask(ActionEvent event) throws SQLException {
+        model.submitTask(order);
     }
 }

@@ -101,10 +101,10 @@ public class OrderDAO {
 
     }
 
-    public void submitTask(Order order) throws SQLServerException, SQLException {
+    public void submitTask(Department dep, Order order) throws SQLServerException, SQLException {
         String sql = "UPDATE   [Department_Order] "
                 + " SET  [Finished_Order] = 1 "
-                + " WHERE [Department_Order].[Dept_ID] = 1 AND [Department_Order].[Order_ID]= ? "
+                + " WHERE [Department_Order].[Dept_ID] = ? AND [Department_Order].[Order_ID]= ? "
                 + " IF( "
                 + "SELECT  COUNT([Order_ID]) AS TasksLeft "
                 + " FROM  [dbo].[Department_Order] AS O "
@@ -118,9 +118,10 @@ public class OrderDAO {
                 + " END ";
         try (Connection con = connector.getConnection()) {
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, order.getOrderNumber());
+            stmt.setInt(1, dep.getDeptID());
             stmt.setString(2, order.getOrderNumber());
             stmt.setString(3, order.getOrderNumber());
+            stmt.setString(4, order.getOrderNumber());
             stmt.execute();
         }
     }

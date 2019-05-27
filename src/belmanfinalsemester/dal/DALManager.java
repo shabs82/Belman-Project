@@ -9,6 +9,7 @@ import belmanfinalsemester.be.Department;
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.dal.DAO.DepartmentDAO;
 import belmanfinalsemester.dal.DAO.OrderDAO;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class DALManager {
     private List<Order> orderInfo;
     OrderDAO orderDAO;
     DepartmentDAO depDAO;
+    
 
     public DALManager() {
         try {
@@ -49,4 +51,8 @@ public class DALManager {
         List<Order> currentOrders = orderDAO.getOrders(departmentName, currentDate);
         return currentOrders;
     }
+    
+     public void submitTask(Department dep, Order order) throws SQLServerException, SQLException {
+         orderDAO.submitTask(dep, order);
+     }
 }

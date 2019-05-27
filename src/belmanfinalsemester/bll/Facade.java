@@ -8,7 +8,7 @@ package belmanfinalsemester.bll;
 import belmanfinalsemester.be.Department;
 import belmanfinalsemester.be.Order;
 import belmanfinalsemester.dal.DALManager;
-import belmanfinalsemester.dal.MockDALManager;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -61,4 +61,8 @@ public class Facade {
     public List<Department> getDepartments() throws SQLException{
         return dalManager.getDepartments();
     }
+    
+     public void submitTask(Department dep, Order order) throws SQLServerException, SQLException {
+         dalManager.submitTask(dep, order);
+     }
 }

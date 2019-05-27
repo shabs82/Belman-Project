@@ -5,6 +5,7 @@
  */
 package belmanfinalsemester.dal;
 
+import JSON.JSONReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -16,6 +17,8 @@ import static java.nio.file.StandardWatchEventKinds.OVERFLOW;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -23,8 +26,8 @@ import org.json.simple.parser.ParseException;
  * @author kulsoom-Abbas
  */
 public class DatabaseFileWatcher {
-    
-    private DBConnector connector;  
+
+    private DBConnector connector;
 
     //Watcher
     private final WatchService watcher;
@@ -34,23 +37,18 @@ public class DatabaseFileWatcher {
     private Path targetDirPath;
     private Path invalidDirPath;
     private DatabaseWriter dbWriter;
-    
-    
+    private JSONReader jR;
 
     //String ExcelFileToConver = null;
-
     public DatabaseFileWatcher() throws IOException {
-    
+
         this.dbWriter = new DatabaseWriter();
         this.connector = new DBConnector();
-        //this.dbWriter = new DatabaseWriter(connector);
-        //this.excelC = new ExcelConverter();
+        this.jR = new JSONReader();
 
         this.watcher = FileSystems.getDefault().newWatchService();
 
-        this.dir = Paths.get("src/dataTransfers");
-        this.targetDirPath = Paths.get("src/dataTransfers/InsertedValidFiles");
-        this.invalidDirPath = Paths.get("src/dataTransfers/InvalidFiles");
+        this.dir = Paths.get("src/dataFolder");
 
         try {
             WatchKey key = dir.register(watcher, ENTRY_CREATE);
@@ -96,28 +94,15 @@ public class DatabaseFileWatcher {
                 // here is a file or a folder modified in the folder
                 File fileCaught = child.toFile();
                 Path sourceFilePath = Paths.get(fileCaught.toURI());
-                Path endDirPath = targetDirPath;
 
-                if (Files.probeContentType(child) == null) {
-                    endDirPath = invalidDirPath;
-                } else if (Files.probeContentType(child).equals("text/plain")) { //JSON
-                    dbWriter.checkForChangesInFile(1, fileCaught.getPath());
-                } else if (Files.probeContentType(child).equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) { //Excel
-                    //String newPathForFile = excelC.csvConverter(fileCaught.getPath()); // Get new generated CSV file path
-                    //Path excelsourceFilePath = Paths.get(fileCaught.getPath()); // Set old file for deletion
-                    //Files.delete(excelsourceFilePath);  //Delete old Excel file
-
-                    //dbWriter.checkForChangesInFile(2, newPathForFile); // Write CSV to database
-                    //sourceFilePath = Paths.get(newPathForFile); //Set new CSV pathway for transfering to storage
-                    filename = sourceFilePath.getFileName(); // Get new CSV file name
-                } else if (Files.probeContentType(child).equals("application/vnd.ms-excel")) { //CSV
-                    dbWriter.checkForChangesInFile(2, fileCaught.getPath());
-                } else {
-                    endDirPath = invalidDirPath;
+                if (Files.probeContentType(child).equals("text/plain")) {
+                    try {
+                        //JSON
+                        jR.readJsonFile(fileCaught.getPath());
+                    } catch (Exception ex) {
+                        Logger.getLogger(DatabaseFileWatcher.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-                Path targetFilePath = endDirPath.resolve(filename);
-                Files.move(sourceFilePath, targetFilePath);
-System.out.println("Transfer done for " + filename);
             }
 
             // Reset the key -- this step is critical if you want to
@@ -130,7 +115,4 @@ System.out.println("Transfer done for " + filename);
         }
     }
 
-    
 }
-    
-

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="OrderInfoAnchorPane" prefHeight="515.0" prefWidth="600.0" stylesheets="@../../../resources/css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.OrderFullViewController">
+<AnchorPane id="OrderInfoAnchorPane" prefHeight="515.0" prefWidth="600.0" stylesheets="@../../../resources/css/CSS.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="belmanfinalsemester.gui.controller.OrderFullViewController">
    <children>
       <VBox layoutX="14.0" layoutY="8.0" prefHeight="515.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -40,7 +40,7 @@
       </VBox>
       <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="411.0" prefHeight="20.0" prefWidth="569.0" progress="0.0" secondaryProgress="0.0" />
       <Label layoutX="24.0" layoutY="182.0" prefHeight="30.0" text="Employees assigned to order:" textFill="WHITE" />
-      <Label fx:id="lblEmployees" layoutX="251.0" layoutY="190.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: white;" />
+      <Label fx:id="lblEmployees" layoutX="251.0" layoutY="190.0" prefHeight="55.0" prefWidth="204.0" style="-fx-background-color: white;" />
       <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="72.0" prefHeight="30.0" prefWidth="120.0" text="Start Date :" textFill="WHITE" />
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="80.0" layoutY="144.0" prefHeight="30.0" prefWidth="139.0" text="Customer's Name :" textAlignment="JUSTIFY" textFill="WHITE" />
       <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="108.0" prefHeight="30.0" prefWidth="120.0" text="Delivery Date :" textFill="WHITE" />

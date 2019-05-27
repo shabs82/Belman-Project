@@ -27,12 +27,6 @@ public class DatabaseWriter {
         this.connector = new DBConnector();
     }
 
-    
-
-    DatabaseWriter(DBConnector connector) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public void addDepartment(String deptName) {
         try (Connection con = connector.getConnection()) {
             String sql = "Declare @countint int "
@@ -198,8 +192,5 @@ public class DatabaseWriter {
         return rs.getInt("Dept_ID");
     }
 
-    void checkForChangesInFile(int i, String path) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

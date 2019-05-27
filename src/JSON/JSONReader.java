@@ -28,12 +28,10 @@ public class JSONReader {
 
     DatabaseWriter dbWriter;
 
-    public void readJsonFile() throws SQLServerException, Exception {
+    public void readJsonFile(String fileName) throws SQLServerException, Exception {
         dbWriter = new DatabaseWriter();
         FileReader reader = null;//file reader has no file
         try {
-           
-            String fileName = "src/JSON/JSON.txt";//path of the file
             JSONParser parser = new JSONParser();//parser object created
             reader = new FileReader(fileName);//refers to file reader line 36
             Object obj = parser.parse(reader);//created a parsed object

@@ -176,9 +176,6 @@ public class MainViewController implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(scene);
 
-                stage.getIcons().add(new Image("/resources/images/belman_logo_retina.png"));
-                stage.setTitle("Belman");
-
                 stage.show();
 
                 Order order = tvOrders.getSelectionModel().getSelectedItem();

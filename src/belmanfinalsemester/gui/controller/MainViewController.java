@@ -171,6 +171,7 @@ public class MainViewController implements Initializable {
                         .getResource("/belmanfinalsemester/gui/view/OrderFullView.fxml"));
                 root = (Parent) fxmlLoader.load();
                 OrderFullViewController controller = fxmlLoader.getController();
+                controller.injectModel(mModel);
                 Scene scene = new Scene(root);
 
                 Stage stage = new Stage();

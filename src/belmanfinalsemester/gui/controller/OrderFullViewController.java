@@ -5,11 +5,14 @@
  */
 package belmanfinalsemester.gui.controller;
 
+import belmanfinalsemester.be.Department;
 import belmanfinalsemester.be.Order;
+import belmanfinalsemester.gui.model.MainModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -21,6 +24,9 @@ import javafx.scene.control.Label;
  */
 public class OrderFullViewController implements Initializable {
 
+    private MainModel model;
+    private Order order;
+    
     @FXML
     private JFXProgressBar progressBar;
     @FXML
@@ -46,9 +52,13 @@ public class OrderFullViewController implements Initializable {
         //TODO
     }    
  
+    public void injectModel(MainModel model)
+    {
+        this.model = model;
+    }
     
-    
-    public void setOrderInfo(Order currentOrder){   
+    public void setOrderInfo(Order currentOrder){  
+     this.order = currentOrder;
      lblOrderNum.setText(currentOrder.getOrderNumber());
      lblStartDate.setText(currentOrder.getStartDate().toString());
      lblDeliveryDate.setText(currentOrder.getEndDate().toString());
@@ -57,4 +67,10 @@ public class OrderFullViewController implements Initializable {
      progressBar.setProgress(currentOrder.getProgress() );
     
     }
-}
+
+    @FXML
+    private void clickFinish(ActionEvent event) {
+        model.submitTask(order);
+    }
+ }
+

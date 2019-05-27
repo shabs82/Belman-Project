@@ -37,4 +37,9 @@ public class MainModel {
     public List<Department> getDepartments() throws SQLException{
         return facade.getDepartments();
     }
-}
+    
+    public void submitTask(Order order){
+        facade.submitTask(selectedDepartment, order);
+    }
+    }
+

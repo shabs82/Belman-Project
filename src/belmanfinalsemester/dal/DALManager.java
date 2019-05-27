@@ -54,4 +54,12 @@ public class DALManager {
         List<Order> currentOrders = orderDAO.getOrders(departmentName, currentDate);
         return currentOrders;
     }
-}
+     public void submitTask(Department dep ,Order order) {
+        try {
+            orderDAO.submitTask(dep, order);
+        } catch (SQLException ex) {
+            Logger.getLogger(DALManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
+     }
+

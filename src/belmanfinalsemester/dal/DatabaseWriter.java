@@ -41,7 +41,7 @@ public class DatabaseWriter {
             stmt.execute();
         } catch (SQLException ex) {
 
-            System.out.println(ex);
+            ex.printStackTrace();
         }
 
     }
@@ -66,8 +66,7 @@ public class DatabaseWriter {
 
         } catch (SQLException ex) {
 
-            System.out.println(ex);
-            //throw new Exception("Cannot connect to the database");
+            ex.printStackTrace();
         }
         addCustomerOrder(orderID, custName);
 
@@ -100,7 +99,7 @@ public class DatabaseWriter {
             }
         } catch (SQLServerException ex) {
 
-            System.out.println(ex);
+            ex.printStackTrace();
         }
     }
 
@@ -123,8 +122,7 @@ public class DatabaseWriter {
 
         } catch (SQLException ex) {
 
-            System.out.println(ex);
-            //throw new Exception("Cannot connect to the database");
+           ex.printStackTrace();
         }
 
     }
@@ -146,7 +144,7 @@ public class DatabaseWriter {
 
         } catch (SQLException ex) {
 
-            System.out.println(ex);
+            ex.printStackTrace();
         }
     }
 
@@ -175,8 +173,8 @@ public class DatabaseWriter {
             stmt.execute();
 
         } catch (SQLException ex) {
-            System.out.println(ex);
-            //throw new Exception("Cannot connect to the database");
+           ex.printStackTrace();
+           
         }
 
     }

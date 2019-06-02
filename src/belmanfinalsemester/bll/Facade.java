@@ -63,6 +63,6 @@ public class Facade {
     }
     
      public void submitTask(Department dep, Order order) throws SQLServerException, SQLException {
-         dalManager.submitTask(dep, order);
+         dalManager.submitTask(dep, order, LocalDate.now());
      }
 }
